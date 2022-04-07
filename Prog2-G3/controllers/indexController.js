@@ -3,7 +3,7 @@
 //funciones
 
 const indexController = {
-    home: function (req,res){//esto se hace en /products. mmuestra todo el array
+    home: function (req,res){
         return res.render('index');
     }
 }
