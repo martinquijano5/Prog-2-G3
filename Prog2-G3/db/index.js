@@ -1,5 +1,7 @@
 let data = {
-    usuario: 3,
+    usuario: {
+        
+    },
     productos: [
         {
             modelo: 'iPhone 13 Pro',
@@ -10,9 +12,9 @@ let data = {
             tamanio: 6.1,
         }, {
             modelo: 'iPhone 13 Pro Max',
-            marca: Apple,
+            marca: 'Apple',
             anio: 2021,
-            color: grafito,
+            color: 'grafito',
             memoria: 512,
             tamanio: 6.7,
         }, {

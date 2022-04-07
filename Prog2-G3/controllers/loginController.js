@@ -1,5 +1,4 @@
 //requires necesarios
-
 //funciones
 
 const loginController = {
