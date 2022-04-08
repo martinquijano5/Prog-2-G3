@@ -67,7 +67,7 @@ let data = {
             memoria: 16,
             tamanio: 4,
         }, {
-            modelo: 'LG V30',
+            modelo: 'V30',
             marca: 'LG',
             anio: 2017,
             color: 'violeta',
