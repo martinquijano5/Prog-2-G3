@@ -80,9 +80,69 @@ let data = {
             tamanio: 6,
         }
     ],
-    comentarios: 3
+    comentarios: [
+        {
+            nombre: 'John Doe',
+            texto: 'Me gusto',
+            rating: 5,
+            imagen: './images/users/default-image.png'
+        },
+        {
+            nombre: 'Everyman',
+            texto: 'Meh',
+            rating: 2,
+            imagen: './images/users/default-image.png'
+        },
+        {
+            nombre: 'John Smith',
+            texto: 'Lo recomiendo',
+            rating: 4,
+            imagen: './images/users/default-image.png'
+        },
+        {
+            nombre: 'Richard Roe',
+            texto: 'Cumple lo que promete',
+            rating: 4,
+            imagen: './images/users/default-image.png'
+        },
+        {
+            nombre: 'Jane Doe',
+            texto: 'Medio caro por lo que ofrece',
+            rating: 3,
+            imagen: './images/users/default-image.png'
+        },
+        {
+            nombre: 'Joe Sixpack',
+            texto: 'Se lo compre a mi pibe y anda todo el dia usandolo',
+            rating: 4,
+            imagen: './images/users/default-image.png'
+        },
+        {
+            nombre: 'Mr Brown',
+            texto: 'Muy malo',
+            rating: 1,
+            imagen: './images/users/default-image.png'
+        },
+        {
+            nombre: 'Joe Blow',
+            texto: 'No se si me gusta o no',
+            rating: 3,
+            imagen: './images/users/default-image.png'
+        },
+        {
+            nombre: 'Mr. Nobody',
+            texto: 'Esta bueno, medio caro pero cumple',
+            rating: 3,
+            imagen: './images/users/default-image.png'
+        },
+        {
+            nombre: 'Ordinary Joe',
+            texto: 'La camara medio mala por lo que vale',
+            rating: 2,
+            imagen: './images/users/default-image.png'
+        },
+
+    ]
 }
-
-
 
 module.exports = data;
