@@ -11,6 +11,7 @@ var productRouter = require('./routes/product');
 var productAddRouter = require('./routes/productAdd');
 var profileEditRouter = require('./routes/profileEdit.js');
 var registerRouter = require('./routes/register');
+var profileRouter = require('./routes/profile');
 
 
 var usersRouter = require('./routes/users');
@@ -33,6 +34,7 @@ app.use('/product', productRouter);
 app.use('/product-add', productAddRouter);
 app.use('/profile-edit', profileEditRouter);
 app.use('/register', registerRouter);
+app.use('/profile', profileRouter);
 
 
 app.use('/users', usersRouter);

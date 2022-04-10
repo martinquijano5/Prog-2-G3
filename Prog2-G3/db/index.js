@@ -1,6 +1,11 @@
 let data = {
     usuario: {
-        
+        email: 'tutequijano@gmail.com',
+        usuario: 'mquijano',
+        contrasenia: 'callefalsa1234',
+        fecha: '2002-11-05',//guardamos la fecha en el formato yy/mm/dd para que funcione el auto completado
+        dni: 44486189,
+        foto: './images/users/default-image.png'
     },
     productos: [
         {

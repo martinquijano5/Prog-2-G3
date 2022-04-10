@@ -476,6 +476,32 @@ textarea.form-input {
   color: #fff;
 }
 
+#register {
+  font-size: medium;
+  font-weight: bold;
+}
+
+#register label{
+  padding-right: 20px;
+}
+
+#register .label-input {
+  margin-bottom: 20px;
+}
+
+#register .border{
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 5px;
+  padding-left: 7.5px;
+}
+
+#register .label-input img{
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  vertical-align: middle;
+}
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {
