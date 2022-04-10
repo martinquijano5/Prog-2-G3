@@ -6,6 +6,9 @@ let data = require('../db/index');
 const profileController = {
     show: function (req,res){
         return res.render('profile', {info: data});
+    },
+    edit: function (req,res){
+        return res.render('profile-edit', {info: data});
     }
 }
 

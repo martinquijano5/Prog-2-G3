@@ -8,8 +8,6 @@ var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var searchResultsRouter = require('./routes/searchResults');
 var productRouter = require('./routes/product');
-var productAddRouter = require('./routes/productAdd');
-var profileEditRouter = require('./routes/profileEdit.js');
 var registerRouter = require('./routes/register');
 var profileRouter = require('./routes/profile');
 
@@ -31,8 +29,6 @@ app.use('/index', indexRouter);
 app.use('/login', loginRouter);
 app.use('/search-results', searchResultsRouter);
 app.use('/product', productRouter);
-app.use('/product-add', productAddRouter);
-app.use('/profile-edit', profileEditRouter);
 app.use('/register', registerRouter);
 app.use('/profile', profileRouter);
 
