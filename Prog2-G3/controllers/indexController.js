@@ -1,18 +1,10 @@
 //requires necesarios
 let data = require('../db/index');
+let funcionFillArray = require('../utils/fillArray');
+
 //funciones
-function  fillArray (largo) {
-    var arr = [];
-    while(arr.length < largo){
-        var r = Math.floor(Math.random() * 10);
-        if(arr.indexOf(r) === -1) arr.push(r);
-    }
-    return arr
-}
-
-
-arrayNovedades = fillArray(4);
-arrayMasComentados = fillArray(4);
+let arrayNovedades = funcionFillArray(4);
+let arrayMasComentados = funcionFillArray(4);
 
 
 const indexController = {

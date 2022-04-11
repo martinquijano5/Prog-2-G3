@@ -1,18 +1,10 @@
 //requires necesarios
 let data = require('../db/index');
-
+let funcionFillArray = require('../utils/fillArray');
 //funciones
 
-function  fillArray (largo) {
-    var arr = [];
-    while(arr.length < largo){
-        var r = Math.floor(Math.random() * 10);
-        if(arr.indexOf(r) === -1) arr.push(r);
-    }
-    return arr
-}
+let array = funcionFillArray(5);
 
-array = fillArray(5);
 
 const productController = {
     show: function (req,res){
