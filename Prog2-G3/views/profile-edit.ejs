@@ -4,7 +4,7 @@
 <%- include('./partials/head') %>
 <body>
 	<!-- Header -->
-	<%- include('./partials/header') %>
+	<%- include('./partials/headerLogueado') %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 	
-		<form id="register" action="./profile">
+		<form id="register" action="/profile">
 			<div class="label-input">
 				<label for="exampleInputEmail1" class="form-label">Email</label>
 				<input class = "border" type="email" class="form-control" id="exampleInputEmail1 aria-describedby="emailHelp" value="<%= info.usuario.email %>" >
