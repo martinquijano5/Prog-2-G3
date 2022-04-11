@@ -8,7 +8,7 @@ let array = funcionFillArray(5);
 
 const productController = {
     show: function (req,res){
-        return res.render('product', {info: data, array: array});
+        return res.render('product', {info: data, array: array,id: req.params.id});
     },
     add: function (req,res){
         return res.render('product-add', {info: data});

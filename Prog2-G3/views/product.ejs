@@ -10,7 +10,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= info.productos[0].modelo %></h2> 
+			<h2 class="products-title"><%= info.productos[id].modelo %></h2> 
 			<p class="product-detail-description">
 				<a href="product/add">Agregar</a>
 			</p>
@@ -18,7 +18,7 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="images/products/<%=0%>.jpeg" alt="" class="product-detail-img">
+					<img src="/images/products/<%=id%>.jpeg" alt="<%= info.productos[id].modelo %>" class="product-detail-img">
 					<p class="product-detail-description">
 						Descripción corta del producto. En la página principal solo se ven 2 líneas de estar descripción.Lorem ipsum dolor,
 						sit amet consectetur adipisicing elit. Tae ipsam amet eum, totam dolore libero illo unde? Consectetur dolorem neque
@@ -28,10 +28,10 @@
 					<section class="comments">
 						<% for(let i =0 ;i< 5; i++) { %>
 							<article>
-								<img src="<%= info.comentarios[array[i]].imagen %> " alt="">
+								<img src="/<%= info.comentarios[array[i]].imagen %> " alt="">
 								<div class="data">
 									<p class="user">
-									<strong> <a href="profile"> <%= info.comentarios[array[i]].nombre %>  </a> </strong>
+									<strong> <a href="/profile"> <%= info.comentarios[array[i]].nombre %>  </a> </strong>
 									<%= info.comentarios[array[i]].texto %>
 									</p>
 									<% for(let count = 0; count < info.comentarios[array[i]].rating; count++) { %>
