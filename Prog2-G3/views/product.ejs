@@ -20,9 +20,8 @@
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src="/images/products/<%=id%>.jpeg" alt="<%= info.productos[id].modelo %>" class="product-detail-img">
 					<p class="product-detail-description">
-						Descripción corta del producto. En la página principal solo se ven 2 líneas de estar descripción.Lorem ipsum dolor,
-						sit amet consectetur adipisicing elit. Tae ipsam amet eum, totam dolore libero illo unde? Consectetur dolorem neque
-						veritatis.</p>
+						<%= `Marca: ${info.productos[0].marca} - Año: ${info.productos[0].anio} - Color: ${info.productos[0].color} - Memoria: ${info.productos[0].memoria}GB - Tamaño: ${info.productos[0].tamanio} pulgadas` %> %></p>
+					</p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
