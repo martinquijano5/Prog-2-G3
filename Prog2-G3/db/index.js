@@ -101,8 +101,8 @@ let data = {
         },
         {
             nombre: 'Richard Roe',
-            texto: 'Cumple lo que promete',
-            rating: 4,
+            texto: 'Tampoco la gran cosa',
+            rating: 2,
             imagen: './images/users/default-image.png'
         },
         {
@@ -120,7 +120,7 @@ let data = {
         {
             nombre: 'Mr Brown',
             texto: 'Muy malo',
-            rating: 1,
+            rating: 0,
             imagen: './images/users/default-image.png'
         },
         {
@@ -140,9 +140,17 @@ let data = {
             texto: 'La camara medio mala por lo que vale',
             rating: 2,
             imagen: './images/users/default-image.png'
+        },{
+            nombre: 'Analía Maidana',
+            texto: 'Muy Bueno',
+            rating: 5,
+            imagen: './images/users/default-image.png'
+        },{
+            nombre: 'Sebastián Rellihan',
+            texto: 'Cumple lo que promete',
+            rating: 5,
+            imagen: './images/users/default-image.png'
         },
-
     ]
 }
-
 module.exports = data;

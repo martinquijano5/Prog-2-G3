@@ -481,27 +481,27 @@ textarea.form-input {
   color: #fff;
 }
 
-#register {
+.formulario {
   font-size: medium;
   font-weight: bold;
 }
 
-#register label{
+.formulario label{
   padding-right: 20px;
 }
 
-#register .label-input {
+.formulario .label-input {
   margin-bottom: 20px;
 }
 
-#register .border{
+.formulario .border{
   border-radius: 25px;
   border: 2px solid black;
   padding: 5px;
   padding-left: 7.5px;
 }
 
-#register .label-input img{
+.formulario .label-input img{
   width: 100px;
   height: 100px;
   margin-right: 20px;

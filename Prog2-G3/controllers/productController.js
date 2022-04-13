@@ -12,12 +12,7 @@ const productController = {
     },
     add: function (req,res){
         return res.render('product-add', {info: data});
-    },
-    create: function (req,res){
-        return res.send('formulario');
-    },
+    }
 }
 //exportamos
 module.exports = productController;
-
-

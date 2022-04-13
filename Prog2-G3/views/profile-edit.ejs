@@ -15,7 +15,7 @@
 			</div>
 		</div>
 	
-		<form id="register" action="/profile">
+		<form class="formulario" action="/profile" method="GET">
 			<div class="label-input">
 				<label for="exampleInputEmail1" class="form-label">Email</label>
 				<input class = "border" type="email" class="form-control" id="exampleInputEmail1 aria-describedby="emailHelp" value="<%= info.usuario.email %>" >
@@ -28,7 +28,6 @@
 				<label for="exampleInputPassword1" class="form-label">Contraseña</label>
 				<input class = "border" type="password" class="form-control" id="exampleInputPassword1"value="<%= info.usuario.contrasenia %>">
 			</div>
-
 			<div class="label-input">
 				<label for="form-control" id="inputDob">Fecha de nacimiento</label>
 				<input class = "border" type="date" class="form-date" value="<%= info.usuario.fecha %>">
@@ -46,7 +45,7 @@
 				<input type="file" class="form-file">
 			</div>
 
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary">Cargar</button>
 		</form>
 	</div>
 
