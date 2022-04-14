@@ -3,7 +3,7 @@ let data = require('../db/index');
 let funcionFillArray = require('../utils/fillArray');
 //funciones
 
-let array = funcionFillArray(5);
+let array = funcionFillArray(7);
 
 
 const productController = {

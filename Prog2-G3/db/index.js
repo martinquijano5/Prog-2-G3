@@ -106,7 +106,7 @@ let data = {
         {
             nombre: 'John Doe',
             texto: 'Me gusto',
-            rating: 5,
+            rating: 4,
             imagen: './images/users/default-image.png'
         },
         {
@@ -124,13 +124,13 @@ let data = {
         {
             nombre: 'Richard Roe',
             texto: 'Cumple lo que promete',
-            rating: 4,
+            rating: 3,
             imagen: './images/users/default-image.png'
         },
         {
             nombre: 'Jane Doe',
-            texto: 'Medio caro por lo que ofrece',
-            rating: 3,
+            texto: 'Muy caro por lo que ofrece',
+            rating: 1,
             imagen: './images/users/default-image.png'
         },
         {
@@ -142,7 +142,7 @@ let data = {
         {
             nombre: 'Mr Brown',
             texto: 'Muy malo',
-            rating: 1,
+            rating: 0,
             imagen: './images/users/default-image.png'
         },
         {
@@ -158,9 +158,9 @@ let data = {
             imagen: './images/users/default-image.png'
         },
         {
-            nombre: 'Ordinary Joe',
-            texto: 'La camara medio mala por lo que vale',
-            rating: 2,
+            nombre: 'Sebastián Rellihan',
+            texto: 'Casi tan bueno como esta pagina, si pudiese le pondria un 10',
+            rating: 5,
             imagen: './images/users/default-image.png'
         },
 
