@@ -43,6 +43,15 @@ a {
   display: inline-block;
   text-decoration: none;
   color: inherit;
+  font-family: "Lucida Console";
+}
+
+h2 {
+  font-family: "Times New Roman"
+}
+
+p {
+  font-family: Arial
 }
 
 figure {
