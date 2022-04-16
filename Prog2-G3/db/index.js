@@ -117,8 +117,8 @@ let data = {
         },
         {
             nombre: 'John Smith',
-            texto: 'Lo recomiendo',
-            rating: 4,
+            texto: 'Malardo',
+            rating: 0.5,
             imagen: './images/users/default-image.png'
         },
         {
@@ -130,13 +130,13 @@ let data = {
         {
             nombre: 'Jane Doe',
             texto: 'Muy caro por lo que ofrece',
-            rating: 1,
+            rating: 1.5,
             imagen: './images/users/default-image.png'
         },
         {
             nombre: 'Joe Sixpack',
             texto: 'Se lo compre a mi pibe y anda todo el dia usandolo',
-            rating: 4,
+            rating: 4.5,
             imagen: './images/users/default-image.png'
         },
         {
@@ -148,13 +148,13 @@ let data = {
         {
             nombre: 'Joe Blow',
             texto: 'No se si me gusta o no',
-            rating: 3,
+            rating: 3.5,
             imagen: './images/users/default-image.png'
         },
         {
             nombre: 'Mr. Nobody',
             texto: 'Esta bueno, medio caro pero cumple',
-            rating: 3,
+            rating: 3.5,
             imagen: './images/users/default-image.png'
         },
         {
