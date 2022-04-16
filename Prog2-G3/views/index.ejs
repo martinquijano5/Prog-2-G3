@@ -17,7 +17,7 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Novedades</h2>
+				<h2 class="products-title tipografia tipografia-celular">Novedades</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<% for(let i =0 ;i< 4; i++) { %>
@@ -28,7 +28,7 @@
 							<img src="images/products/<%= arrayNovedades[i] %>.jpeg" alt="<%= info.productos[arrayNovedades[i]].modelo %>">
 						</figure>
 						<article class="product-box_data">
-							<h2> <%= info.productos[arrayNovedades[i]].modelo %> </h2>
+							<h2 class="tipografia-celular"> <%= info.productos[arrayNovedades[i]].modelo %> </h2>
 							<p><%= `${info.productos[arrayMasComentados[i]].marca} - ${info.productos[arrayMasComentados[i]].anio} - ${info.productos[arrayMasComentados[i]].color} - ${info.productos[arrayMasComentados[i]].memoria}GB - ${info.productos[arrayMasComentados[i]].tamanio} pulgadas`  %></p>
 							<p>Comentarios: 12</p>
 						</article>
@@ -43,7 +43,7 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Más comentados</h2>
+				<h2 class="products-title tipografia tipografia-celular">Más comentados</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<% for(let i =0 ;i< 4; i++) { %>

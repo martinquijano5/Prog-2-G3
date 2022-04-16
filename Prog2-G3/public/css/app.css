@@ -1,6 +1,7 @@
 /*====== Fonts ======*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&family=Roboto&display=swap');
 
 /*====== Variables ======*/
 :root {
@@ -11,7 +12,10 @@
   --light-gray: #ebebeb;
   --green: #39b54a;
   --base-font-family: 'Roboto', sans-serif;
-  --color-principal:#ef9100;
+  --color-principal:#1f2833;
+  --color-logo:#66fcf1;
+  --color-links:white;
+
 
 }
 
@@ -575,4 +579,26 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
+
+}
+.fuente-logo{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  color: var(--color-logo);
+}
+.color-link{
+  color: var(--color-links);
+  font-size: 20px;
+  font-family: "Roboto";
+}
+.color-opinion{
+  color:white
+}
+.tipografia{
+  font-family:'Montserrat', sans-serif;
+ 
+}
+.tipografia-celular{
+  color: black;
+  font-weight: bold;
 }

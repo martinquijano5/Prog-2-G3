@@ -10,16 +10,16 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= info.productos[id].modelo %></h2> 
+			<h2 class="products-title tipografia tipografia-celular"><%= info.productos[id].modelo %></h2> 
 			<p class="product-detail-description">
-				<a href="/product/add">Agregar</a>
+				<a href="/product/add"><b style="font-weight: bold;font-family: Roboto;">Agregar</b></a>
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src="/images/products/<%=id%>.jpeg" alt="<%= info.productos[id].modelo %>" class="product-detail-img">
-					<p class="product-detail-description">
+					<p class="product-detail-description tipografia">
 						<%= `Marca: ${info.productos[id].marca} - Año: ${info.productos[id].anio} - Color: ${info.productos[id].color} - Memoria: ${info.productos[id].memoria}GB - Tamaño: ${info.productos[id].tamanio} pulgadas` %> %></p>
 					</p>
 				</article>
