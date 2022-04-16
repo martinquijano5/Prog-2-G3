@@ -1,6 +1,5 @@
 /*====== Fonts ======*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&family=Roboto&display=swap');
 
 /*====== Variables ======*/
@@ -11,16 +10,19 @@
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
-  --base-font-family: 'Roboto', sans-serif;
+  --base-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  --subtitle-font-family: 'Roboto', sans-serif;
   --color-principal:#1f2833;
   --color-logo:#66fcf1;
   --color-links:white;
-
-
 }
-
-
-
+/*
+fuentes:
+  titulo: montserrat
+  a: times new roman
+  h2: roboto
+  general: gill sans
+*/
 /*====== Basics ======*/
 * {
   box-sizing: border-box;
@@ -50,15 +52,7 @@ a {
   display: inline-block;
   text-decoration: none;
   color: inherit;
-  font-family: "Lucida Console";
-}
-
-h2 {
-  font-family: "Times New Roman"
-}
-
-p {
-  font-family: Arial
+  font-family: "Times New Roman" !important;
 }
 
 figure {
@@ -91,11 +85,22 @@ hr {
 .main-header_credit-link {
   display: block;
 }
-
+.main-header_credit-link {
+  width: max-content;
+  margin: 0;
+  margin-right: 0;
+}
 .main-header_credit-link {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
+  color:white
+}
+.main-header h2{
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  color: var(--color-logo);
 }
 
 .search-form {
@@ -148,6 +153,15 @@ hr {
   font-size: 1.5em;
 }
 
+.main-navbar ul li  {
+    color: var(--color-links);
+  font-size: 20px;
+}
+.main-navbar ul li form button{
+  color: var(--color-links);
+font-size: 20px;
+}
+
 .logout{
   background: transparent;
   border: 0px;
@@ -164,6 +178,10 @@ hr {
   display: block;
   padding: 5px 0;
   border-bottom: solid 1px var(--gray);
+}
+
+.products-wrapper h2 {
+  font-family: var(--subtitle-font-family);
 }
 
 
@@ -186,8 +204,9 @@ hr {
 
 .products-title {
   font-size: 2.4em;
-  font-weight: 400;
-  color: var(--gray);
+  font-family:var(--subtitle-font-family);
+  color: black;
+  font-weight: 900;
 }
 
 .product-box {
@@ -290,7 +309,7 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: var(--color-logo);
   font-size: 3.5em;
 }
 
@@ -350,6 +369,10 @@ hr {
   padding: 15px 15px 15px 40px;
   font-size: 1.8em;
   line-height: 1.5;
+}
+
+.product-detail-description a{
+  font-weight: 900;
 }
 
 .product-detail-price {
@@ -560,7 +583,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: var(--light-blue);
+    color: var(--color-logo);
   }
 
   .left-navbar li {
@@ -579,26 +602,4 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
-
-}
-.fuente-logo{
-  font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
-  color: var(--color-logo);
-}
-.color-link{
-  color: var(--color-links);
-  font-size: 20px;
-  font-family: "Roboto";
-}
-.color-opinion{
-  color:white
-}
-.tipografia{
-  font-family:'Montserrat', sans-serif;
- 
-}
-.tipografia-celular{
-  color: black;
-  font-weight: bold;
 }
