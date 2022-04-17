@@ -103,10 +103,10 @@ let data = {
             }
         ],
     comentarios: [
-        {
-            nombre: 'John Doe',
-            texto: 'Me gusto',
-            rating: 4,
+        {   
+            nombre: 'Sebastián Rellihan',
+            texto: 'Casi tan bueno como esta pagina, si pudiese le pondria un 10',
+            rating: 5,
             imagen: './images/users/default-image.png'
         },
         {
@@ -158,9 +158,9 @@ let data = {
             imagen: './images/users/default-image.png'
         },
         {
-            nombre: 'Sebastián Rellihan',
-            texto: 'Casi tan bueno como esta pagina, si pudiese le pondria un 10',
-            rating: 5,
+            nombre: 'John Doe',
+            texto: 'Me gusto',
+            rating: 4,
             imagen: './images/users/default-image.png'
         },
 
