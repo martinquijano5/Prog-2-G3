@@ -187,12 +187,8 @@ font-size: 20px;
 
 
 /*====== Banner ======*/
-.banner {
-  background-image: url(/images/img-home-banner.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 100px;
+#banner {
+  margin-top: 30px;
 }
 
 
@@ -336,7 +332,13 @@ font-size: 20px;
   padding: 15px 0;
 }
 
-
+#nombres{
+  display: flex;
+  justify-content: space-around;
+}
+#nombres p{
+  font-size: 2.4em;
+}
 /*====== Product Detail ======*/
 .product-detail {
   background-color: #ffffff;
