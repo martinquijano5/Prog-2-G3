@@ -1,4 +1,5 @@
 //requires necesarios
+
 let data = require('../db/index');
 let funcionFillArray = require('../utils/fillArray');
 //funciones
