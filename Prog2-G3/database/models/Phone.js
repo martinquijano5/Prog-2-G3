@@ -7,7 +7,7 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
     let cols = {
         id:{
             autoIncrement: true,
-            primarykey:true,
+            primaryKey: true,
             type: DataTypes.INTEGER,
         },
         image:{

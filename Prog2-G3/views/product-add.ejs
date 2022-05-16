@@ -21,45 +21,45 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 		</div>
-		<form class="formulario" method="GET" action="/profile">
+		<form class="formulario" method="POST" action="/product/store">
 			<div class="label-input">
 				<label for="formGroupExampleInput" class="form-label">Modelo</label>
-				<input class = "border form-control" type="text" id="formGroupExampleInput">
+				<input name="model" class = "border form-control" type="text" id="formGroupExampleInput">
 			</div>
 
 			<div class="label-input">
 				<label for="formGroupExampleInput" class="form-label">Marca</label>
-				<input class = "border form-control" type="text" id="formGroupExampleInput">
+				<input name="brand" class = "border form-control" type="text" id="formGroupExampleInput">
 			</div>
 
 			<div class="label-input">
 				<label for="formGroupExampleInput" class="form-label">Año</label>
-				<input class = "border form-control" type="number" id="formGroupExampleInput">
+				<input name="year" class = "border form-control" type="number" id="formGroupExampleInput">
 			</div>
 
 			<div class="label-input">
 				<label for="formGroupExampleInput" class="form-label">Color</label>
-				<input class = "border form-control" type="text" id="formGroupExampleInput">
+				<input name="color" class = "border form-control" type="text" id="formGroupExampleInput">
 			</div>
 
 			<div class="label-input">
 				<label for="formGroupExampleInput" class="form-label">Memoria</label>
-				<input class = "border form-control" type="number" id="formGroupExampleInput" placeholder="Numero de GB">
+				<input name="memory" class = "border form-control" type="number" id="formGroupExampleInput" placeholder="Numero de GB">
 			</div>
 
 			<div class="label-input">
 				<label for="formGroupExampleInput" class="form-label">Tamaño</label>
-				<input class = "border form-control" type="number" id="formGroupExampleInput" placeholder="Numero en pulgadas">
+				<input name="size" class = "border form-control" type="number" id="formGroupExampleInput" placeholder="Numero en pulgadas">
 			</div>
 
 			<div class="label-input">
 				<label for="form-control" id="inputDob">Fecha de carga</label>
-				<input class = "border form-control" type="date" class="form-date">
+				<input name="date" class = "border form-control" type="date" class="form-date">
 			</div>
 
 			<div class="label-input">
 				<label for="form-control" id="inputFoto">Foto del Producto</label>
-				<input type="file" class="form-file">
+				<input name="image" type="file" class="form-file">
 			</div>
 			<button type="submit" class="btn btn-primary">Cargar</button>
 		</form>
