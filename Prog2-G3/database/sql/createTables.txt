@@ -1,6 +1,5 @@
-
-CREATE TABLE users (
-	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+TABLE users (
+	id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	email VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -14,22 +13,22 @@ CREATE TABLE phones (
     image VARCHAR(255) NOT NULL,
     model VARCHAR(255) NOT NULL,
     brand VARCHAR(255) NOT NULL,
-    year INT UNSIGNED NOT NULL,
+    year INT(4) UNSIGNED NOT NULL,
     color VARCHAR(255) NOT NULL,
     memory INT UNSIGNED NOT NULL,
-    size DECIMAL(2,1),
+    size DECIMAL(2,1) NOT NULL,
     dateOfUpload DATE NOT NULL,
-    user_id INT UNSIGNED,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FkUserId INT UNSIGNED NOT NULL,
+    FOREIGN KEY (FkUserId) REFERENCES users(id)
 );
 
 CREATE TABLE comments (
 	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
-    text varchar(500) NOT NULL,
-    rating DECIMAL(2,1) NOT NULL CHECK (rating BETWEEN 0 and 5),
+    text varchar(255) NOT NULL,
+    rating DECIMAL(2,1) NOT NULL,
     image VARCHAR(255) NOT NULL,
-    phone_id INT UNSIGNED,
-    user_id INT UNSIGNED,
-    FOREIGN KEY (phone_id) REFERENCES phones(id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FkPhoneId INT UNSIGNED NOT NULL,
+    FkUserId INT UNSIGNED NOT NULL,
+    FOREIGN KEY (FkPhoneId) REFERENCES phones(id),
+    FOREIGN KEY (FkUserId) REFERENCES users(id)
 );

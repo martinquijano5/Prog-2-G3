@@ -6,40 +6,53 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
     //columnas y sus propiedades
     let cols = {
         id:{
-            autoIncrement: true,
             primaryKey: true,
-            type: DataTypes.INTEGER,
+            notNull: true,
+            autoIncrement: true,
+            type: DataTypes.INTEGER.UNSIGNED,
         },
         image:{
+            notNull: true,
             type: DataTypes.STRING,
         },
         model: {
+            notNull: true,
             type: DataTypes.STRING,
         },
         brand:{
+            notNull: true,
             type: DataTypes.STRING,
         },
         year:{
-            type: DataTypes.DATE,
+            notNull: true,
+            type: DataTypes.INTEGER(4).UNSIGNED,
         },
         color:{
+            notNull: true,
             type: DataTypes.STRING,
         },
         memory:{
-            type: DataTypes.DECIMAL,
+            notNull: true,
+            type: DataTypes.INTEGER.UNSIGNED,
         },
         size:{
-            type: DataTypes.DECIMAL,
+            notNull: true,
+            type: DataTypes.DECIMAL(2,1),
         },
         dateOfUpload:{
+            notNull: true,
             type: DataTypes.DATE,
         },
+        FkUserId:{
+            notNull:true,
+            type: DataTypes.INTEGER.UNSIGNED,
+        }
     }
     //CONFIGURACIONES ADICIONALES
     let config = { //puede no estar, cuando el nombre de la tabla es el nombre del modelo en plural
         tableName: 'phones',
         timestamps: false, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
-        underscored: true, //si la tabla tiene columnas con nombres usando _.
+        underscored: false, //si la tabla tiene columnas con nombres usando _.
     }
     const Phones = Sequelize.define(alias, cols, config);
 
