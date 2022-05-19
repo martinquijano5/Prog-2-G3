@@ -12,15 +12,15 @@
                 type: DataTypes.STRING,
                 
             },
-            usuario:{
+            username:{
                 notNull: true,
                 type: DataTypes.STRING,
             },
-            contrasenia:{
+            password:{
                 notNull: true,
                 type: DataTypes.STRING,
             },
-            fecha:{
+            date:{
                 notNull: true,
                 type: DataTypes.DATE,
             },
@@ -28,7 +28,7 @@
                 notNull: true,
                 type: DataTypes.INTEGER,
             },
-            foto:{
+            image:{
                 notNull: true,
                 type: DataTypes.STRING,
             }
