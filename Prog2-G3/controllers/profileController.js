@@ -1,5 +1,7 @@
 //requires necesarios
 let data = require('../db/index');
+const db = require('../database/models')
+const bcrypt = require('bcryptjs');
 
 //funciones
 
