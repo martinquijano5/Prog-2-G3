@@ -15,9 +15,6 @@ const productController = {
     add: function (req,res){
         //renderizar el form para crear una pelicula
         //conseguir todos los generos de la based e datos
-
-        
-
         return res.render('product-add', {info: data});
     },
     store: function (req,res){

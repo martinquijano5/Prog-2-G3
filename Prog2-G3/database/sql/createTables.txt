@@ -38,6 +38,6 @@ CREATE TABLE usersFollowers (
     FkUserId INT UNSIGNED NOT NULL,
     FkFollowerId INT UNSIGNED NOT NULL,
     
-     FOREIGN KEY (FkUserId) REFERENCES users(id),
-	 FOREIGN KEY (FkFollowerId) REFERENCES users(id)
-)
+    FOREIGN KEY (FkUserId) REFERENCES users(id),
+	FOREIGN KEY (FkFollowerId) REFERENCES users(id)
+);

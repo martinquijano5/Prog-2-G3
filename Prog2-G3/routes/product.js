@@ -6,4 +6,6 @@ const productController = require('../controllers/productController');
 router.get('/add', productController.add); // muestra el form
 router.post('/store', productController.store); // procesa y almacena los datos en la db
 router.get('/:id', productController.show);
+
+
 module.exports = router;

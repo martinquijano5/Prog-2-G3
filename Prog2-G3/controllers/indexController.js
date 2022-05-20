@@ -17,7 +17,10 @@ const indexController = {
             // res.send (celulares)
            // }) 
         return res.render('index', {info: data, arrayNovedades: arrayNovedades, arrayMasComentados: arrayMasComentados});
-    }
+    },
+    search: function (req,res){
+        return res.render('search-results', {info: data});
+    }   
 }
 
 //exportamos
