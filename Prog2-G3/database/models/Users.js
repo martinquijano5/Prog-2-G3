@@ -1,5 +1,5 @@
     module.exports = function (Sequelize,DataTypes){
-        let alias="Users"
+        let alias="User"
         let cols={
             id:{
                 autoIncrement: true,
@@ -20,7 +20,7 @@
                 notNull: true,
                 type: DataTypes.STRING,
             },
-            date:{
+            date:{ //esto es date of release, que dia salio el telefono
                 notNull: true,
                 type: DataTypes.DATE,
             },
@@ -31,15 +31,20 @@
             image:{
                 notNull: true,
                 type: DataTypes.STRING,
+            },
+            createdAt:{
+                notNull: true,
+                type: DataTypes.DATE,
+            },
+            updatedAt:{
+                type: DataTypes.DATE,
             }
-            
-            
             
         }
         let config={
             tableName: 'users',
-            timestamps: false, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
-            underscored: true,
+            timestamps: true, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
+            underscored: false,
 
         }
         const Users = Sequelize.define(alias, cols, config);

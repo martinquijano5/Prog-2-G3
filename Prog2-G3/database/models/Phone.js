@@ -39,10 +39,14 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
             notNull: true,
             type: DataTypes.DECIMAL(2,1),
         },
-        dateOfUpload:{
+        createdAt:{
             notNull: true,
             type: DataTypes.DATE,
         },
+        updatedAt:{
+            type: DataTypes.DATE,
+        },
+        
         FkUserId:{
             notNull:true,
             type: DataTypes.INTEGER.UNSIGNED,
@@ -51,7 +55,7 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
     //CONFIGURACIONES ADICIONALES
     let config = { //puede no estar, cuando el nombre de la tabla es el nombre del modelo en plural
         tableName: 'phones',
-        timestamps: false, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
+        timestamps: true, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
         underscored: false, //si la tabla tiene columnas con nombres usando _.
     }
     const Phones = Sequelize.define(alias, cols, config);
