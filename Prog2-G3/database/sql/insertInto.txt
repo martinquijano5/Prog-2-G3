@@ -1,12 +1,28 @@
-//inserts de usuarios
-
 INSERT INTO users (email, username, password, date, dni, image, createdAt)
-VALUES ('mquijano@udesa.edu.ar', 'mquijano', '1234', '2002-11-05', '44486189', '0', curdate());
-
-
-//inserts de phones
-INSERT INTO phones (image, model, brand, year, color, memory, size, createdAt, FkUserId)
-VALUES ('/images/products/1.jpeg', 'iPhone 13 Pro', 'Apple', 2021, 'azul sierra', 128, 6.1, curdate(), 1);
+VALUES 
+('mquijano@udesa.edu.ar', 'mquijano', '1234', '2002-11-05', '44486189', '/images/users/default-image.png', curdate());
 
 INSERT INTO phones (image, model, brand, year, color, memory, size, createdAt, FkUserId)
-VALUES ('/images/products/2.jpeg', 'iPhone 13 Pro Max', 'Apple', 2021, 'grafito', 512, 6.7, curdate(), 1);
+VALUES ('/images/products/1.jpeg', 'iPhone 13 Pro', 'Apple', 2021, 'azul sierra', 128, 6.1, curdate(), 1),
+('/images/products/2jpeg', 'iPhone 13 Pro Max', 'Apple', 2021, 'grafito', 512, 6.7, curdate(), 1),
+('/images/products/3jpeg', 'Galaxy S22 Ultra', 'Samsung', 2022, 'burgundy', 256, 6.8, curdate(), 1),
+('/images/products/4jpeg', 'iPhone 11', 'Apple', 2019, 'rojo', 128, 6.1, curdate(), 1),
+('/images/products/5jpeg', 'Moto G60s', 'motorola', 2021, 'azul', 128, 6.78, curdate(), 1),
+('/images/products/6jpeg', 'Galaxy Note 8', 'Samsung', 2017, 'negro', 256, 6.3, curdate(), 1),
+('/images/products/7jpeg', 'Galaxy Note 3', 'Samsung', 2013, 'blanco', 64, 5.7, curdate(), 1),
+('/images/products/8jpeg', 'Galaxy S21 +', 'Samsung', 2013, 'negro', 128, 6.7, curdate(), 1),
+('/images/products/9jpeg', 'iPhone SE', 'Appl', 2016, 'rose gold', 16,4, curdate(), 1),
+('/images/products/10jpeg', 'V30', 'LG', 2017, 'violeta', 64, 6, curdate(), 1);
+
+INSERT INTO comments (text,rating,fkPhoneId,FkUserId,createdAt)
+VALUES ("Casi tan bueno como esta pagina, si pudiese le pondria un 10",3,1,1,curdate()),
+("Meh",1,1,1,curdate()),
+("Malardo",0.5,1,1,curdate()),
+("Cumple lo que promete",3,1,1,curdate()),
+("Muy caro por lo que ofrece",1.5,1,1,curdate()),
+("Se lo compre a mi pibe y anda todo el dia usandolo",4.5,1,1,curdate()),
+("Muy malo",0,1,1,curdate()),
+("No se si me gusta o no",3.5,1,1,curdate()),
+("Esta bueno, medio caro pero cumple",3.5,1,1,curdate()),
+("Me gusto",4,1,1,curdate());
+

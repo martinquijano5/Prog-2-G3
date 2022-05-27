@@ -30,7 +30,6 @@ CREATE TABLE comments (
 	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
     text varchar(255) NOT NULL,
     rating DECIMAL(2,1) NOT NULL,
-    image VARCHAR(255) NOT NULL,
     FkPhoneId INT UNSIGNED NOT NULL,
     FkUserId INT UNSIGNED NOT NULL,
     createdAt DATE not null,
