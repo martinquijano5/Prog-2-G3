@@ -26,3 +26,4 @@ VALUES ("Casi tan bueno como esta pagina, si pudiese le pondria un 10",3,1,1,cur
 ("Esta bueno, medio caro pero cumple",3.5,1,1,curdate()),
 ("Me gusto",4,1,1,curdate());
 
+    

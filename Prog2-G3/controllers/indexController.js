@@ -24,32 +24,29 @@ const indexController = {
             }) 
     },
     search: function (req,res){
+        var usuarios = [];
         phones.findAll ({
-            //where: [{model: {[op.like]: req.query.search}}] //  asi deberia funcionar 
-            where: [{model: {[op.like]: "%iphone%"}}] //solucionar hardcodeo
-            //where: [{model: req.query.search}]
+            where: [{model: {[op.like]: '%' + req.query.search + '%'}}] //  asi deberia funcionar 
         })
             .then(function (celulares){
-                let usuarios = [];
                 let fks = [];
-                return res.send (celulares) //esto lo use para ver si llegaba -> hasta aca anda
+                //return res.send (celulares) //esto lo use para ver si llegaba -> hasta aca anda
                 //agarrar perfiles de los que postearon los celulares
                 for(let i = 0; i < celulares.length; i++){
                     fks.push(celulares[i].FkUserId);
                 }
-                //return res.send(fks) // hasta aca anda
+                //return res.send(fks); -> llega [1,1,1,1]
                 for(let i = 0; i < fks.length; i++){
                     users.findOne({
                         where: [{id: fks[i]}]
                     })
                     .then(function(usuarioPosteo){
                         usuarios.push({id: usuarioPosteo.id, username: usuarioPosteo.username, image: usuarioPosteo.image});
-                        //return res.send(usuarios); // muestra solo el primer usuario
-                        console.log('EL USUARIO ES: ' + usuarioPosteo.username + i); // si vemos la consola vemos que el array lo recorre
+                        if(i == fks.length - 1){ //esto es para que se haga en la ultima vuelta del for
+                            return res.render('search-results', {info: celulares, usuarios: usuarios, query: req.query.search});
+                        }
                     })
                 }
-                //return res.send(usuarios); // aca no llegan los usuarios -> scope del then??
-                //return res.render('search-results', {info: celulares, usuarios: usuarios, query: req.query.search});
             })        
             .catch(error => console.log('EL ERROR ES: ' + error))
         }
