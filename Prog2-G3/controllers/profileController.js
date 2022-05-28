@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 
 const profileController = {
     show: function (req,res){
-        return res.render('profile', {info: data});
+        return res.render('profile', {info: data, id: req.params.id});
     },
     edit: function (req,res){
         return res.render('profile-edit', {info: data});

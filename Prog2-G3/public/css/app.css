@@ -572,7 +572,17 @@ height: auto;
 border-radius: 50%;
 }
 
+#estrellas-input {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
 
+#estrellas-input button {
+  border: 0;
+  background-color: white;
+  padding: 0;
+}
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {

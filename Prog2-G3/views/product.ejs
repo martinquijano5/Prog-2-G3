@@ -1,7 +1,10 @@
+<% estrellas = ['<button id="estrella-0" onclick="llenarEstrellas(0)"> <i class="far fa-star fa-3x"></i> </button>','<button id="estrella-1" onclick="llenarEstrellas(1)"> <i class="far fa-star fa-3x"></i> </button>','<button id="estrella-2" onclick="llenarEstrellas(2)"> <i class="far fa-star fa-3x"></i> </button>','<button id="estrella-3" onclick="llenarEstrellas(3)"> <i class="far fa-star fa-3x"></i> </button>','<button id="estrella-4" onclick="llenarEstrellas(4)"> <i class="far fa-star fa-3x"></i> </button>'] %> 
+
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
 <%- include('./partials/head') %>
+
 <body>
 	<!-- Header -->
 	<%- include('./partials/header') %>
@@ -27,10 +30,10 @@
 					<section class="comments">
 						<% for(let i =0; i< 7; i++) { %>
 							<article>
-								<img src="/images/users/<%= array[i] %>.png " alt="">
+								<a href="/profile/<%=array[i]%>">	<img src="/images/users/<%= array[i] %>.png " alt=""> </a>
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/profile"> <%= info.comentarios[array[i]].nombre %>  </a> </strong>
+									<strong> <a href="/profile/<%=array[i]%> "> <%= info.comentarios[array[i]].nombre %>  </a> </strong>
 									<%= info.comentarios[array[i]].texto %>
 									</p>
 									<p id = "estrellas-<%=i%> ">
@@ -49,10 +52,19 @@
 								</div>
 							</article>
 						<% } %>
-
+							
 					</section>
+					<div id="estrellas-input">
+						<%- estrellas[0] %> 
+						<%- estrellas[1] %> 
+						<%- estrellas[2] %> 
+						<%- estrellas[3] %> 
+						<%- estrellas[4] %> 
+					</div>
+					<input type="hidden" name="vuelta" id="estrellas-rating-vuelta" value="-1">
 					<form class="form" action="" method="GET">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+						<input class="form-input" type="text" placeholder="Agregar comentario">
+						<input type="hidden" name="rating" id="estrellas-rating-input">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
 					<hr>
