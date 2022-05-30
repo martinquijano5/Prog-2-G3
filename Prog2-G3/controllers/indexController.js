@@ -1,6 +1,6 @@
 //requires necesarios
 const db = require('../database/models'); //trae los modelos
-const { usuario } = require('../db/index');
+const usuario = require('../db/index');
 const phones = db.Phone //de todos los modelos pide Phone(el alias)
 const users = db.User // de todos los modelos pide User(el alias)
 const op = db.Sequelize.Op;//contiene los operadores para usar en metodos de sequelize
@@ -9,10 +9,10 @@ const data = require('../db/index')
 
 let funcionFillArray = require('../utils/fillArray');
 
+
 //funciones
 let arrayNovedades = funcionFillArray(4);
 let arrayMasComentados = funcionFillArray(4);
-
 
 const indexController = {
     home: function (req,res){

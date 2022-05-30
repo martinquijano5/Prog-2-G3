@@ -19,10 +19,6 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
             notNull: true,
             type: DataTypes.DECIMAL(2,1),
         },
-        image:{
-            notNull: true,
-            type: DataTypes.STRING,
-        },
         FkPhoneId: {
             notNull: true,
             type: DataTypes.INTEGER.UNSIGNED,
