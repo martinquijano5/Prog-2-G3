@@ -13,7 +13,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= info.productos[id].modelo %></h2> 
+			<h2 class="products-title"><%= info.model %></h2> 
 			<p class="product-detail-description">
 				<a href="/product/add">Agregar</a>
 			</p>
@@ -21,16 +21,16 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%=id%>.jpeg" alt="<%= info.productos[id].modelo %>" class="product-detail-img">
+					<img src="<%= info.image %> " alt="<%= info.model %>" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= `Marca: ${info.productos[id].marca} - Año: ${info.productos[id].anio} - Color: ${info.productos[id].color} - Memoria: ${info.productos[id].memoria}GB - Tamaño: ${info.productos[id].tamanio} pulgadas` %> %></p>
+						<%= `Marca: ${info.brand} - Año: ${info.year} - Color: ${info.color} - Memoria: ${info.memory}GB - Tamaño: ${info.size} pulgadas` %>
 					</p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
 						<% for(let i =0; i< 7; i++) { %>
 							<article>
-								<a href="/profile/<%=array[i]%>">	<img src="/images/users/<%= array[i] %>.png " alt=""> </a>
+								<a href="/profile/<%=info.id%>">	<img src="/images/users/<%= info %>.png " alt=""> </a>
 								<div class="data">
 									<p class="user">
 									<strong> <a href="/profile/<%=array[i]%> "> <%= info.comentarios[array[i]].nombre %>  </a> </strong>

@@ -26,9 +26,9 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         timestamps: false, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
         underscored: false, //si la tabla tiene columnas con nombres usando _.
     }
-    const UsersFollowers = Sequelize.define(alias, cols, config);
+    const UserFollower = Sequelize.define(alias, cols, config);
 
     //Relaciones entre tablas
 
-    return UsersFollowers;
+    return UserFollower;
 }

@@ -47,9 +47,23 @@
             underscored: false,
 
         }
-        const Users = Sequelize.define(alias, cols, config);
+        const User = Sequelize.define(alias, cols, config);
 
     //Relaciones entre tablas
 
-    return Users;
+    User.associate = function(models){
+        User.hasMany(models.Phone, 
+            {
+                as: 'posteos',
+                foreignKey: 'id'
+            });
+
+        User.hasMany(models.Comment,
+            {
+                as: 'comentarios',
+                foreignKey: 'id'
+            });
+    }
+
+    return User;
     }

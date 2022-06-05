@@ -42,9 +42,24 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         timestamps: true, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
         underscored: false, //si la tabla tiene columnas con nombres usando _.
     }
-    const Comments = Sequelize.define(alias, cols, config);
+    const Comment = Sequelize.define(alias, cols, config);
 
     //Relaciones entre tablas
 
-    return Comments;
+    Comment.associate = function(models){
+        Comment.belongsTo(models.Phone,
+            {
+                as: 'productoComentado',
+                foreignKey: 'FkPhoneId'
+            });
+
+        Comment.belongsTo(models.User,
+            {
+                as: 'comentador',
+                foreignKey: 'FkUserId'
+            });
+
+    }
+
+    return Comment;
 }

@@ -58,9 +58,24 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         timestamps: true, //le dice al modelo si la tabla estan las columnas updatedAt y createdAt
         underscored: false, //si la tabla tiene columnas con nombres usando _.
     }
-    const Phones = Sequelize.define(alias, cols, config);
+    const Phone = Sequelize.define(alias, cols, config);
 
-    //Relaciones entre tablas
+    //Relaciones entre tablas --> un telefono (1) pertenece a un usuario (n)
 
-    return Phones;
+    Phone.associate = function(models){
+        Phone.belongsTo(models.User,
+            {
+                as: 'owner',
+                foreignKey: 'FkUserId'
+            });
+        Phone.hasMany(models.Comment,
+            {
+                as: 'comentarios',
+                foreignKey: 'FkPhoneId'
+            });
+    }
+
+
+
+    return Phone;
 }

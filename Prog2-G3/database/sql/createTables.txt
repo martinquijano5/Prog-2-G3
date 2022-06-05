@@ -22,7 +22,7 @@ CREATE TABLE phones (
     createdAt DATE not null,
     updatedAt DATE,
     
-    FkUserId INT UNSIGNED NOT NULL,
+    FkUserId INT UNSIGNED,
     FOREIGN KEY (FkUserId) REFERENCES users(id)
 );
 

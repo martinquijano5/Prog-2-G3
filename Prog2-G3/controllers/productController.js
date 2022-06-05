@@ -1,16 +1,29 @@
 //requires necesarios
+const db = require('../database/models'); //trae los modelos
+const phones = db.Phone //de todos los modelos pide Phone(el alias)
+const users = db.User // de todos los modelos pide User(el alias)
+const op = db.Sequelize.Op;//contiene los operadores para usar en metodos de sequelize
 
 const { productos } = require('../db/index');
 let data = require('../db/index');
 let funcionFillArray = require('../utils/fillArray');
 //funciones
 
-let array = funcionFillArray(7);
 
 
 const productController = {
     show: function (req,res){
-        return res.render('product', {info: data, array: array,id: req.params.id});
+        phones.findOne({
+            include: [{association: 'owner'}, {association: 'comentarios'}],
+            where: [{id: req.params.id}]
+        })
+            .then(function(unTelefono){
+                //return res.send(unTelefono)
+
+                let largoArray = funcionFillArray(unTelefono.comentarios.length);
+                return res.render('product', {info: unTelefono, largoArray: largoArray, id: req.params.id});
+            })
+        //return res.render('product', {info: data, array: array, id: req.params.id});
     },
     add: function (req,res){
         //renderizar el form para crear una pelicula
@@ -36,7 +49,7 @@ const productController = {
 
         //guardar info en la base de datos
 
-        phone.create(product) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
+        phones.create(product) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
             .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
                 // return res.send(respuesta)
                 res.redirect('/profile'); //redirigir
