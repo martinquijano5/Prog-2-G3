@@ -1,13 +1,16 @@
 //requires necesarios
+const { escapeRegExpChars } = require('ejs/lib/utils');
 const db = require('../database/models'); //trae los modelos
 const phones = db.Phone //de todos los modelos pide Phone(el alias)
 const users = db.User // de todos los modelos pide User(el alias)
+const comments = db.Comment
 const op = db.Sequelize.Op;//contiene los operadores para usar en metodos de sequelize
 
 const { productos } = require('../db/index');
 let data = require('../db/index');
 let funcionFillArray = require('../utils/fillArray');
 //funciones
+
 
 
 
@@ -18,10 +21,27 @@ const productController = {
             where: [{id: req.params.id}]
         })
             .then(function(unTelefono){
+                let comentadores = [];//checkear si el codigo este esta bien o hay otra forma de resolver
+                if(unTelefono.comentarios[0] != undefined){
+                    //return res.send('hay comentarios')
+                    for(let i = 0; i < unTelefono.comentarios.length; i++){
+                        users.findOne({
+                            where: [{id: unTelefono.comentarios[i].FkUserId}]
+                        })
+                        .then(function(unComentador){
+                            comentadores.push(unComentador);
+                            if(i == unTelefono.comentarios.length - 1){
+                                //return res.send(comentadores)
+                                return res.render('product', {info: unTelefono, comentadores: comentadores, id: req.params.id});
+                            }
+                        })
+                    }
+                } else {
+                    //return res.send('no hay comentarios')
+                    return res.render('product', {info: unTelefono, comentadores: [], id: req.params.id});
+                }
                 //return res.send(unTelefono)
-
-                let largoArray = funcionFillArray(unTelefono.comentarios.length);
-                return res.render('product', {info: unTelefono, largoArray: largoArray, id: req.params.id});
+                
             })
         //return res.render('product', {info: data, array: array, id: req.params.id});
     },

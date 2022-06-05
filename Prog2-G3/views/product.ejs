@@ -28,31 +28,37 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% for(let i =0; i< 7; i++) { %>
-							<article>
-								<a href="/profile/<%=info.id%>">	<img src="/images/users/<%= info %>.png " alt=""> </a>
-								<div class="data">
-									<p class="user">
-									<strong> <a href="/profile/<%=array[i]%> "> <%= info.comentarios[array[i]].nombre %>  </a> </strong>
-									<%= info.comentarios[array[i]].texto %>
-									</p>
-									<p id = "estrellas-<%=i%> ">
-									<% if (info.comentarios[array[i]].rating === 0) { %>
-										<i class="far fa-star fa-3x"></i>
-									<% } else { %>
-										<% for(let count = 0; count < info.comentarios[array[i]].rating; count++) { %> 
-											<% if(info.comentarios[array[i]].rating - count > 0.5) { %> 
-												<i class="fas fa-star fa-3x"></i>
-											<% } else if (info.comentarios[array[i]].rating - count == 0.5) { %> 
-												<i class="fas fa-star-half-alt fa-3x"></i>
+						
+						<% if(comentadores[0] != undefined) { %> 
+							<p id="titulo-comments"><strong>Comentarios:</strong></p>
+							<% for(let i =0; i< comentadores.length; i++) { %>
+								<article>
+									<a href="/profile/<%= comentadores[i].id %>">	<img src=" <%= comentadores[i].image %>  " alt=""> </a>
+									<div class="data">
+										<p class="user">
+										<strong> <a href="/profile/<%=info.comentarios[i].FkUserId%> "> <%= comentadores[i].username %>  </a> </strong>
+										<%= info.comentarios[i].text %>
+										</p>
+										<p id = "estrellas-<%=i%> ">
+										<% if (info.comentarios[i].rating == 0) { %>
+											<i class="far fa-star fa-3x"></i>
+										<% } else { %>
+											<% for(let count = 0; count < info.comentarios[i].rating; count++) { %> 
+												<% if(info.comentarios[i].rating - count > 0.5) { %> 
+													<i class="fas fa-star fa-3x"></i>
+												<% } else if (info.comentarios[i].rating - count == 0.5) { %> 
+													<i class="fas fa-star-half-alt fa-3x"></i>
+												<% } %> 
 											<% } %> 
-										<% } %> 
-									<% } %>
-								</p>
-								</div>
-							</article>
-						<% } %>
-							
+										<% } %>
+									</p>
+									</div>
+								</article>
+							<% } %>
+						<% } else { %> 
+							<p id="titulo-comments"><strong>Este producto no tiene comentarios, comenta aca abajo!</strong></p>
+							<% console.log('no hay comentarios') %> 
+						<% } %>	
 					</section>
 					<div id="estrellas-input">
 						<%- estrellas[0] %> 

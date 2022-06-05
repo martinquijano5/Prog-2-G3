@@ -474,6 +474,11 @@ font-size: 20px;
   font-size: 1.7em;
 }
 
+.comments #titulo-comments {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
 /*====== Formularios ======*/
 .form-label {
   display: inline-block;
