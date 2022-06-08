@@ -1,6 +1,18 @@
 var express = require('express');
 var router = express.Router();
 const profileController = require('../controllers/profileController');
+const multer = require('multer');
+const path = require('path');
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, '../public/images/users'));
+    }, 
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+var upload = multer({storage: storage});
 
 /* GET home page. */
 
@@ -9,6 +21,8 @@ router.get('/edit', profileController.edit);
 router.get('/login', profileController.login);
 
 router.get('/register', profileController.register);
+
+router.post('/storeProfile', upload.single('image') , profileController.storeProfile); // procesa y almacena los datos en la db
 
 router.get('/:id', profileController.show);
 

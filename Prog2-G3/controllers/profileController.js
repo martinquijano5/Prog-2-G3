@@ -8,6 +8,10 @@ const comments = db.Comment
 const op = db.Sequelize.Op;//contiene los operadores para usar en metodos de sequelize
 
 const bcrypt = require('bcryptjs');
+
+const multer = require('multer');
+const path = require('path');
+const { dirname } = require('path');
 //funciones
 
 const profileController = {
@@ -48,6 +52,27 @@ const profileController = {
     },
     login: function (req,res){
         return res.render('login');
+    },
+    storeProfile: function (req, res){
+        console.log(req.body) // aca deberia llegar lo que mando el usuario
+
+
+        let user = {
+            email: req.body.email,
+            username:req.body.user,
+            password: bcrypt.hashSync(req.body.password, 10),
+            date: req.body.date,
+            dni: req.body.dni,
+            image: req.file.filename
+        }
+        //pegar datos a bd
+        users.create(user) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
+            .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
+                // return res.send(respuesta)
+                res.redirect('/profile/1'); //redirigir falta ponerle el id del usuario en cuestion -> session
+            })
+            .catch(error => console.log (error))
+
     }
 }
 
