@@ -73,7 +73,56 @@ const profileController = {
             })
             .catch(error => console.log (error))
 
-    }
+    },
+    login: function(req, res){
+        //mostrar el form de registro
+        //Chequear que un usario esté logueado
+          if(req.session.user != undefined){
+            return res.redirect('/')
+        } else {  
+            return res.render('login');
+        }
+    },
+    logout: function(req, res){
+        //destruir session
+        req.session.destroy();
+
+        //Eliminar cookie si existe.
+        if(req.cookies.userId !== undefined){
+            res.clearCookie('userId')
+        }
+
+        return res.redirect('/index');
+
+    },
+
+    signIn: function(req, res){
+       
+        console.log("entre al sign in");
+        users.findOne({
+            where: [{email: req.body.email}]
+        })
+            .then(function(user){
+                //si trajo un usuario hay que chequear la contraseña con compareSync()
+                //Si las contraseñas no coincuiden mandamos mensaje de error.
+              
+                if(user){
+                    req.session.user = user.dataValues;
+                    //Si el usuario tildó recordarme creo la cookie
+                    if (req.body.remember) {
+                      res.cookie('userId',user.dataValues.id,{maxAge: 1000*60*100} )  
+                    } 
+                    
+                }else{
+                    res.locals.errores = "El email es incorrecto"
+                }
+                console.log(req.session.user);
+                return res.redirect('/index')
+
+            })
+            .catch(error => console.log(error))
+        
+    },
 }
 
 //exportamos

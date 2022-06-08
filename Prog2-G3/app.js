@@ -7,8 +7,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var productRouter = require('./routes/product');
 var profileRouter = require('./routes/profile');
-
-
+const session = require('express-session')
+const db=require('./database/models')
+const users = db.User
 var app = express();
 
 // view engine setup
@@ -20,6 +21,41 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'phoneShop',
+  resave: false,
+  saveUninitialized: true,
+}));
+
+//Pasar los datos de session a locals
+app.use(function(req, res, next){
+  if(req.session.user != undefined){
+    res.locals.user = req.session.user
+  }
+
+  return next();
+})
+
+//Preguntamos por la cookie
+app.use(function(req, res, next){
+  if(req.cookies.userId != undefined && req.session.user == undefined ){
+    let userId = req.cookies.userId;
+    //Tengo que ir a la db y preguntar
+    users.findByPk(userId)
+      .then(function(user){
+          req.session.user = user.dataValues
+          res.locals.user = user.dataValues
+          return next();
+      })
+      .catch(error => console.log(error))
+  } else {
+    return next();
+  }
+    
+})
+
+
 
 app.use('/index', indexRouter);
 app.use('/product', productRouter);

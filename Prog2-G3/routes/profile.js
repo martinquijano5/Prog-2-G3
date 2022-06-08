@@ -19,6 +19,8 @@ var upload = multer({storage: storage});
 router.get('/edit', profileController.edit);
 
 router.get('/login', profileController.login);
+router.post('/login', profileController.signIn);
+router.post('/logout', profileController.logout);
 
 router.get('/register', profileController.register);
 
