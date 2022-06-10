@@ -1,1 +1,2 @@
 CREATE SCHEMA phone_shopper;
+USE phone_shopper;

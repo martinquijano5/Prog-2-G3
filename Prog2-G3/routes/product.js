@@ -19,6 +19,7 @@ var upload = multer({storage: storage});
 /* GET home page. */
 router.get('/add', productController.add); // muestra el form
 router.post('/store', upload.single('image'), productController.store); // procesa y almacena los datos en la db
+router.post('/storeComment', productController.storeComment); 
 router.get('/:id', productController.show);
 
 

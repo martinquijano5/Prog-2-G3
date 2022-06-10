@@ -55,17 +55,6 @@ const indexController = {
             })        
             .catch(error => console.log('EL ERROR ES: ' + error))
         },
-    storeComments: function (req, res){
-        console.log(req.body);
-
-        let comment = {
-            text: req.body.text,
-            rating: req.body.rating,
-            FkPhoneId: req.params.id,
-            FkUserId: res.locals.user.id
-        }
-        comments.
-    }
 }
 
 //exportamos

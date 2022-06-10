@@ -68,15 +68,30 @@ const productController = {
             FkUserId: req.body.FkUserId
         }
         //pegarlo a la bd con el metodo de sequelize
-
         //guardar info en la base de datos
 
         phones.create(product) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
             .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
                 // return res.send(respuesta)
-                res.redirect(`/profile/${product.FkUserId}`); //redirigir
+                return res.redirect(`/profile/${product.FkUserId}`); //redirigir
             })
             .catch(error => console.log (error))
+    },
+    storeComment: function (req, res){
+        console.log(req.body);
+        
+        let comment = {
+            text: req.body.text,
+            rating: req.body.rating,
+            FkUserId: req.body.FkUserId,
+            FkPhoneId: req.body.FkPhoneId
+        }
+        console.log(comment)
+        comments.create(comment)
+            .then(function(){
+                res.redirect('/product/' + comment.FkPhoneId);
+            })
+        
     }
 }
 //exportamos

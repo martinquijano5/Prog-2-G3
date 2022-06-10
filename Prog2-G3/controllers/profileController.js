@@ -73,7 +73,7 @@ const profileController = {
         users.create(user) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
             .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
                 // return res.send(respuesta)
-                res.redirect('/index}'); //redirigir falta ponerle el id del usuario en cuestion -> session
+                res.redirect('/index'); //redirigir falta ponerle el id del usuario en cuestion -> session
             })
             .catch(error => console.log (error))
 
