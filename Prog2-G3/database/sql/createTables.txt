@@ -6,8 +6,8 @@ CREATE TABLE users (
     date DATE NOT NULL,
     dni VARCHAR(8) NOT NULL,
 	image VARCHAR(255) NOT NULL,
-    createdAt DATE not null,
-    updatedAt DATE
+    createdAt DATETIME not null,
+    updatedAt DATETIME
 );
 
 CREATE TABLE phones (
@@ -19,8 +19,8 @@ CREATE TABLE phones (
     color VARCHAR(255) NOT NULL,
     memory INT UNSIGNED NOT NULL,
     size DECIMAL(2,1) NOT NULL,
-    createdAt DATE not null,
-    updatedAt DATE,
+    createdAt DATETIME not null,
+    updatedAt DATETIME,
     
     FkUserId INT UNSIGNED,
     FOREIGN KEY (FkUserId) REFERENCES users(id)
@@ -32,8 +32,8 @@ CREATE TABLE comments (
     rating DECIMAL(2,1) NOT NULL,
     FkPhoneId INT UNSIGNED NOT NULL,
     FkUserId INT UNSIGNED NOT NULL,
-    createdAt DATE not null,
-    updatedAt DATE,
+    createdAt DATETIME not null,
+    updatedAt DATETIME,
 
     FOREIGN KEY (FkPhoneId) REFERENCES phones(id),
     FOREIGN KEY (FkUserId) REFERENCES users(id)

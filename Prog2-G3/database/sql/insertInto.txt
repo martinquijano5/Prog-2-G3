@@ -1,21 +1,21 @@
 INSERT INTO users (email, username, password, date, dni, image, createdAt)
 VALUES 
-('mquijano@udesa.edu.ar', 'mquijano', '1234', '2002-11-05', '44486189', '/images/users/default-image.png', curdate()),
-('dboglione@udesa.edu.ar', 'dboglione', 'abcd', '2003-08-15','43596198','/images/users/default-image.png', curdate());
+('mquijano@udesa.edu.ar', 'mquijano', '1234', '2002-11-05', '44486189', '/images/users/1.png', curdate()),
+('dboglione@udesa.edu.ar', 'dboglione', 'abcd', '2003-08-15','43596198','/images/users/2.png', curdate());
 
 
 
 INSERT INTO phones (image, model, brand, year, color, memory, size, createdAt, FkUserId)
-VALUES ('/images/products/1.jpeg', 'iPhone 13 Pro', 'Apple', 2021, 'azul sierra', 128, 6.1, curdate(), 1),
-('/images/products/2.jpeg', 'iPhone 13 Pro Max', 'Apple', 2021, 'grafito', 512, 6.7, curdate(), 2),
-('/images/products/3.jpeg', 'Galaxy S22 Ultra', 'Samsung', 2022, 'burgundy', 256, 6.8, curdate(), 1),
-('/images/products/4.jpeg', 'iPhone 11', 'Apple', 2019, 'rojo', 128, 6.1, curdate(), 2),
-('/images/products/5.jpeg', 'Moto G60s', 'motorola', 2021, 'azul', 128, 6.78, curdate(), 1),
-('/images/products/6.jpeg', 'Galaxy Note 8', 'Samsung', 2017, 'negro', 256, 6.3, curdate(), 1),
-('/images/products/7.jpeg', 'Galaxy Note 3', 'Samsung','blanco', 64, 5.7, curdate(), 1),
-('/images/products/8.jpeg', 'Galaxy S21 +', 'Samsung', 2013, 'negro', 128, 6.7, curdate(), 1),
-('/images/products/9.jpeg', 'iPhone SE', 'Appl', 2016, 'rose gold', 16,4, curdate(), 1),
-('/images/products/10.jpeg', 'V30', 'LG', 2017, 'violeta', 64, 6, curdate(), 1);
+VALUES ('1.jpeg', 'iPhone 13 Pro', 'Apple', 2021, 'azul sierra', 128, 6.1, curdate(), 1),
+('2.jpeg', 'iPhone 13 Pro Max', 'Apple', 2021, 'grafito', 512, 6.7, curdate(), 2),
+('3.jpeg', 'Galaxy S22 Ultra', 'Samsung', 2022, 'burgundy', 256, 6.8, curdate(), 1),
+('4.jpeg', 'iPhone 11', 'Apple', 2019, 'rojo', 128, 6.1, curdate(), 2),
+('5.jpeg', 'Moto G60s', 'motorola', 2021, 'azul', 128, 6.7, curdate(), 1),
+('6.jpeg', 'Galaxy Note 8', 'Samsung', 2017, 'negro', 256, 6.3, curdate(), 1),
+('7.jpeg', 'Galaxy Note 3', 'Samsung', 2014, 'blanco', 64, 5.7, curdate(), 1),
+('8.jpeg', 'Galaxy S21 +', 'Samsung', 2013, 'negro', 128, 6.7, curdate(), 1),
+('9.jpeg', 'iPhone SE', 'Appl', 2016, 'rose gold', 16,4, curdate(), 1),
+('10.jpeg', 'V30', 'LG', 2017, 'violeta', 64, 6, curdate(), 1);
 
 INSERT INTO comments (text,rating,fkPhoneId,FkUserId,createdAt)
 VALUES ("Casi tan bueno como esta pagina, si pudiese le pondria un 10",3,1,1,curdate()),

@@ -55,7 +55,11 @@ const profileController = {
     },
     storeProfile: function (req, res){
         console.log(req.body) // aca deberia llegar lo que mando el usuario
-
+        var image;
+        if (!(req.file.filename)){
+            console.log('entro al filename')
+            image = '/images/users/default-image.png'
+        }
 
         let user = {
             email: req.body.email,
@@ -69,7 +73,7 @@ const profileController = {
         users.create(user) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
             .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
                 // return res.send(respuesta)
-                res.redirect('/profile/1'); //redirigir falta ponerle el id del usuario en cuestion -> session
+                res.redirect('/index}'); //redirigir falta ponerle el id del usuario en cuestion -> session
             })
             .catch(error => console.log (error))
 
@@ -77,8 +81,9 @@ const profileController = {
     login: function(req, res){
         //mostrar el form de registro
         //Chequear que un usario esté logueado
-          if(req.session.user != undefined){
-            return res.redirect('/')
+        if(req.session.user != undefined){
+            res.locals.errores = 'ya estas logueado';
+            return res.redirect('/index')
         } else {  
             return res.render('login');
         }
@@ -105,20 +110,32 @@ const profileController = {
             .then(function(user){
                 //si trajo un usuario hay que chequear la contraseña con compareSync()
                 //Si las contraseñas no coincuiden mandamos mensaje de error.
-              
-                if(user){
-                    req.session.user = user.dataValues;
-                    //Si el usuario tildó recordarme creo la cookie
-                    if (req.body.remember) {
-                      res.cookie('userId',user.dataValues.id,{maxAge: 1000*60*100} )  
-                    } 
-                    
-                }else{
-                    res.locals.errores = "El email es incorrecto"
-                }
-                console.log(req.session.user);
-                return res.redirect('/index')
+                console.log(req.body)
+                console.log('el usuario es: ' + user);
 
+                if(user){
+                    console.log('entro al if(user)');
+                    if(bcrypt.compareSync(req.body.password, user.password)){
+                        //Si el usuario tildó recordarme creo la cookie
+                        if (req.body.remember) {
+                            res.cookie('userId',user.dataValues.id,{maxAge: 1000*60*100} );
+                        } 
+                        console.log('coinciden');
+                        req.session.user = user.dataValues;
+                        res.locals.errores = ''
+                        console.log('los errores son' + res.locals.errores);
+                        return res.redirect('/profile/' + user.dataValues.id)
+                    } else {
+                        res.locals.errores = 'la password no concide';
+                        console.log('los errores son' + res.locals.errores);
+                        return res.render('login')
+                    }
+
+                } else{
+                    res.locals.errores = "El email es incorrecto"
+                    console.log(res.locals.errores);
+                    return res.render('login')
+                }
             })
             .catch(error => console.log(error))
         

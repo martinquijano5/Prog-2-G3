@@ -4,8 +4,12 @@
 <%- include('./partials/head') %>
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerLogueado') %>
-	<!-- /Header -->
+	<% if(locals.user){ %>
+		<% console.log('cccc' + locals.user.username) %> 
+        <%- include('./partials/headerLogueado', {info: locals.user}) %>
+      <% } else {%>
+        <%- include('./partials/header') %>
+      <% }%>
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">

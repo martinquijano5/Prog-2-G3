@@ -2,10 +2,23 @@ var express = require('express');
 var router = express.Router();
 const productController = require('../controllers/productController');
 
+const multer = require('multer');
+const path = require('path');
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, '../public/images/products'));
+    }, 
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+var upload = multer({storage: storage});
+
 
 /* GET home page. */
 router.get('/add', productController.add); // muestra el form
-router.post('/store', productController.store); // procesa y almacena los datos en la db
+router.post('/store', upload.single('image'), productController.store); // procesa y almacena los datos en la db
 router.get('/:id', productController.show);
 
 

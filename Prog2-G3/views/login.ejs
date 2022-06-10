@@ -11,6 +11,9 @@
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
+			<% if (locals.errores) {%> 
+			<h2> <%= locals.errores %>  </h2>
+			<% } %> 
 			<div class="col-12">
 				<h2 class="products-title">Ingresar</h2>
 			</div>
@@ -23,7 +26,7 @@
 				</div>
 				<div class="label-input">
 					<label for="password" class="form-label">Contraseña</label>
-					<input class = "border" type="password" class="password" name="email">
+					<input class = "border" type="password" class="password" name="password">
 				</div>
 				<div class="label-input form-check">
 					<input class = "border" type="checkbox" class="check" name="remember">

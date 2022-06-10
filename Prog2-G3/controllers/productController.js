@@ -6,12 +6,14 @@ const users = db.User // de todos los modelos pide User(el alias)
 const comments = db.Comment
 const op = db.Sequelize.Op;//contiene los operadores para usar en metodos de sequelize
 
+const multer = require('multer');
+const path = require('path');
+const { dirname } = require('path');
+
 const { productos } = require('../db/index');
 let data = require('../db/index');
 let funcionFillArray = require('../utils/fillArray');
 //funciones
-
-
 
 
 const productController = {
@@ -61,10 +63,10 @@ const productController = {
             memory: req.body.memory,
             size: req.body.size,
             date: req.body.date,
-            image: req.body.image,
+            image: req.file.filename,
             users_id: req.body.users_id,
+            FkUserId: req.body.FkUserId
         }
-
         //pegarlo a la bd con el metodo de sequelize
 
         //guardar info en la base de datos
@@ -72,11 +74,9 @@ const productController = {
         phones.create(product) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
             .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
                 // return res.send(respuesta)
-                res.redirect('/profile'); //redirigir
+                res.redirect(`/profile/${product.FkUserId}`); //redirigir
             })
             .catch(error => console.log (error))
-
-        
     }
 }
 //exportamos

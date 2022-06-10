@@ -3,17 +3,13 @@
 <!-- Include Head -->
 <%- include('./partials/head') %>
 <body>
-	<!-- Header -->
-	<%- include('./partials/headerLogueado') %>
-					<!-- Solo deslogueado <li>
-							<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
-							</a>
-						</li>
-						<li>
-							<a href="login.html">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-						</li> -->
 	<!-- /Header -->
-
+	<% if(locals.user){ %>
+		<% console.log('cccc' + locals.user.username) %> 
+        <%- include('./partials/headerLogueado', {info: locals.user}) %>
+      <% } else {%>
+        <%- include('./partials/header') %>
+      <% }%>
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
@@ -21,7 +17,7 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 		</div>
-		<form class="formulario" method="POST" action="/product/store">
+		<form class="formulario" enctype="multipart/form-data" method="POST" action="/product/store">
 			<div class="label-input">
 				<label for="formGroupExampleInput" class="form-label">Modelo</label>
 				<input name="model" class = "border form-control" type="text" id="formGroupExampleInput">
@@ -49,18 +45,14 @@
 
 			<div class="label-input">
 				<label for="formGroupExampleInput" class="form-label">Tamaño</label>
-				<input name="size" class = "border form-control" type="number" id="formGroupExampleInput" placeholder="Numero en pulgadas">
-			</div>
-
-			<div class="label-input">
-				<label for="form-control" id="inputDob">Fecha de carga</label>
-				<input name="date" class = "border form-control" type="date" class="form-date">
+				<input name="size" class = "border form-control" type="text" id="formGroupExampleInput" placeholder="Numero en pulgadas">
 			</div>
 
 			<div class="label-input">
 				<label for="form-control" id="inputFoto">Foto del Producto</label>
 				<input name="image" type="file" class="form-file">
 			</div>
+			<input name="FkUserId" class = "border form-control" type="hidden" id="formGroupExampleInput" value="<%= locals.user.id %> ">
 			<button type="submit" class="btn btn-primary">Cargar</button>
 		</form>
 	</div>

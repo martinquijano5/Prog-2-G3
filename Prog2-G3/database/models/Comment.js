@@ -34,7 +34,6 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         updatedAt:{
             type: DataTypes.DATE,
         }
-        
     }
     //CONFIGURACIONES ADICIONALES
     let config = { 

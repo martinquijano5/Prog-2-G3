@@ -7,9 +7,12 @@
 
 <body>
 	<!-- Header -->
-	<%- include('./partials/header', {info: info}) %>
 	<!-- /Header -->
-	
+	<% if(locals.user){ %>
+        <%- include('./partials/headerLogueado', {info: locals.user}) %>
+      <% } else {%>
+        <%- include('./partials/header') %>
+      <% }%>
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
@@ -21,7 +24,7 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%= info.image %> " alt="<%= info.model %>" class="product-detail-img">
+					<img src="/images/products/<%= info.image %> " alt="<%= info.model %>" class="product-detail-img">
 					<p class="product-detail-description">
 						<%= `Marca: ${info.brand} - Año: ${info.year} - Color: ${info.color} - Memoria: ${info.memory}GB - Tamaño: ${info.size} pulgadas` %>
 					</p>

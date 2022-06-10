@@ -3,6 +3,7 @@
 const db = require('../database/models'); //trae los modelos
 const phones = db.Phone //de todos los modelos pide Phone(el alias)
 const users = db.User // de todos los modelos pide User(el alias)
+const comments = db.Comment
 const op = db.Sequelize.Op;//contiene los operadores para usar en metodos de sequelize
 
 const data = require('../db/index')
@@ -53,7 +54,18 @@ const indexController = {
                 } forma de hacerlo sin relaciones del model*/
             })        
             .catch(error => console.log('EL ERROR ES: ' + error))
+        },
+    storeComments: function (req, res){
+        console.log(req.body);
+
+        let comment = {
+            text: req.body.text,
+            rating: req.body.rating,
+            FkPhoneId: req.params.id,
+            FkUserId: res.locals.user.id
         }
+        comments.
+    }
 }
 
 //exportamos
