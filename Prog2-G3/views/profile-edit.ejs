@@ -15,41 +15,41 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Registrate</h2>
+				<h2 class="products-title">Editar Perfil</h2>
 			</div>
 		</div>
 	
-		<form class="formulario" action="/profile" method="post">
-			<div class="label-input">
-				<label for="exampleInputEmail1" class="form-label">Email</label>
-				<input class = "border" type="email" class="form-control" id="exampleInputEmail1 aria-describedby="emailHelp" value="<%= info.usuario.email %>" >
-			</div>
-			<div class="label-input">
-				<label for="formGroupExampleInput" class="form-label">Usuario</label>
-				<input class = "border" type="text" class="form-control" id="formGroupExampleInput" value="<%= info.usuario.usuario %>">
-			</div>
-			<div class="label-input">
-				<label for="exampleInputPassword1" class="form-label">Contraseña</label>
-				<input class = "border" type="password" class="form-control" id="exampleInputPassword1"value="<%= info.usuario.contrasenia %>">
-			</div>
-			<div class="label-input">
-				<label for="form-control" id="inputDob">Fecha de nacimiento</label>
-				<input class = "border" type="date" class="form-date" value="<%= info.usuario.fecha %>">
-			</div>
+		<form class="formulario" action="/profile/profile" enctype="multipart/form-data" method="POST"> 
+            <div class="label-input">
+                <label for="email" class="form-label">Email</label>
+                <input name="email" value="<%=info.email%>" class = "border" type="email" placeholder=" example@email.com" class="email">
+            </div>
+            <div class="label-input">
+                <label for="user" class="form-label">Usuario</label>
+                <input name="username" value="<%=info.username%>"  class = "border" type="text" >
+            </div>
+            <div class="label-input">
+                <label for="password" class="form-label">Contraseña</label>
+                <input name="password" value="<%=info.password%>"class = "border" type="password" placeholder=" mín. 8 caracteres" class="password">
+            </div>
+            <div class="label-input">
+                <label for="form-date">Fecha de nacimiento</label>
+                <input name="date" value="<%=info.date%>" class = "border" type="date" class="form-date">
+            </div>
 
-			<div class="label-input">
-				<label for="form-control" id="inputDni">D.N.I.</label>
-				<input class = "border" type="number" class="form-number" value="<%= info.usuario.dni %>">
-			</div>
+            <div class="label-input">
+                <label for="form-number">D.N.I.</label>
+                <input name="dni" value="<%=info.dni%>"  maxlength="9" class = "border" type="number" class="form-number" placeholder=" 23447800">
+            </div>
 
-			<div class="label-input">
-				<label for="form-control" id="inputFoto">Foto de perfil</label>
-				<img src="<%= info.usuario.foto %>" alt="foto del usuario">
-				<input type="file" class="form-file">
-			</div>
-			<input type="hidden" name="id" value=" <%= /*info.usuario.id */ %>  ">
-			<button type="submit" class="btn btn-primary">Cargar</button>
-		</form>
+            <div class="label-input">
+                <label for="form-file">Foto de perfil</label>
+                <input name="image" type="file" class="form-file">
+            </div>
+			<input type="hidden" name="id" value="<%=info.id%>">
+
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+        </form>
 	</div>
 
 	<!-- footer -->

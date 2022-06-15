@@ -45,7 +45,11 @@ const profileController = {
         
     },
     edit: function (req,res){
-        return res.render('profile-edit', {info: data});
+        let idUser = req.params.id
+        users.findByPk(idUser).then(user=>{
+
+            return res.render('profile-edit', {info: user});
+        })
     },
     register: function (req,res){
         return res.render('register');
@@ -55,28 +59,68 @@ const profileController = {
     },
     storeProfile: function (req, res){
         console.log(req.body) // aca deberia llegar lo que mando el usuario
-        var image;
-        if (!(req.file.filename)){
+        //hago un pedido a la api
+        users.findOne({
+            where:[{
+                email:req.body.email
+            }]
+        }).then(user=>{
+            if(!user){
+                var image;
+                        if (!req.file.filename){
+                            console.log('entro al filename')
+                            image = '/images/users/default-image.png'
+                        }
+
+                        let user = {
+                            email: req.body.email,
+                            username:req.body.username,
+                            password: bcrypt.hashSync(req.body.password, 10),
+                            date: req.body.date,
+                            dni: req.body.dni,
+                            image: req.file.filename
+                        }
+                        console.log("el user",user);
+                        //pegar datos a bd
+                        users.create(user) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
+                            .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
+                                // return res.send(respuesta)
+                                res.redirect('/index'); //redirigir falta ponerle el id del usuario en cuestion -> session
+                            })
+                            .catch(error => console.log (error))
+            }else{
+              res.send("ya hay una cuenta con ese mail")
+            }
+        })
+       
+
+    },
+    editProfile: (req,res)=>{
+        
+        if (!req.file){
             console.log('entro al filename')
-            image = '/images/users/default-image.png'
+            req.file.filename = '/images/users/default-image.png'
         }
 
         let user = {
             email: req.body.email,
-            username:req.body.user,
+            username:req.body.username,
             password: bcrypt.hashSync(req.body.password, 10),
             date: req.body.date,
             dni: req.body.dni,
             image: req.file.filename
         }
         //pegar datos a bd
-        users.create(user) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
+        users.update(user,{
+            where:{
+                id:req.body.id
+            }
+        }) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
             .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
                 // return res.send(respuesta)
                 res.redirect('/index'); //redirigir falta ponerle el id del usuario en cuestion -> session
             })
             .catch(error => console.log (error))
-
     },
     login: function(req, res){
         //mostrar el form de registro

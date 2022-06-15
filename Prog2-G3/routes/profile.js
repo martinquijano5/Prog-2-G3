@@ -16,10 +16,11 @@ var upload = multer({storage: storage});
 
 /* GET home page. */
 
-router.get('/edit', profileController.edit);
+router.get('/edit/:id', profileController.edit);
 
 router.get('/login', profileController.login);
 router.post('/login', profileController.signIn);
+router.post('/profile', upload.single('image') ,  profileController.editProfile);
 router.post('/logout', profileController.logout);
 
 router.get('/register', profileController.register);
