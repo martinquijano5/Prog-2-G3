@@ -95,7 +95,7 @@ const profileController = {
 
         let user = { 
             email: req.body.email,
-            username:req.body.user,
+            username:req.body.username,
             password: bcrypt.hashSync(req.body.password, 10),
             date: req.body.date,
             dni: req.body.dni,
