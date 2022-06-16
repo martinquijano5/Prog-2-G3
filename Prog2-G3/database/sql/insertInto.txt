@@ -1,7 +1,8 @@
 INSERT INTO users (email, username, password, date, dni, image, createdAt)
 VALUES 
 ('mquijano@udesa.edu.ar', 'mquijano', '1234', '2002-11-05', '44486189', '/images/users/1.png', curdate()),
-('dboglione@udesa.edu.ar', 'dboglione', 'abcd', '2003-08-15','43596198','/images/users/2.png', curdate());
+('dboglione@udesa.edu.ar', 'dboglione', 'abcd', '2003-08-15','43596198','/images/users/2.png', curdate()),
+('mcoletto@udesa.edu.ar', 'mcoletto', 'mcoletto', '2002-08-27','44232083','/images/users/2.png', curdate());
 
 
 
