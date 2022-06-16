@@ -30,8 +30,13 @@
 					<form class="btn mt-3 ml-4" href="" action="storeFollower" method="post">
 						<input type="hidden" name="usuarioSeguido" value="<%= id %>">
 						<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
-						
-						<button>SEGUIR</button>
+						<% if(info.yaSigue == null) { %>
+							<button>SEGUIR</button>
+							<input type="hidden" name="seguido" value="<%=1%>">
+						<%} else { %> 
+							<button>DEJAR DE SEGUIR</button>
+							<input type="hidden" name="seguido" value="<%=0%>">
+						<% } %> 
 					</form>
 				</div>
 				<div>
