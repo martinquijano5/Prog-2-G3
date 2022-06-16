@@ -37,7 +37,7 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         otherKey: "follower_id",
         timestamps: false
         });
-        }
+    }
         
     return UserFollower;
 }

@@ -5,6 +5,7 @@ const db = require('../database/models')
 const phones = db.Phone //de todos los modelos pide Phone(el alias)
 const users = db.User // de todos los modelos pide User(el alias)
 const comments = db.Comment
+const userFollowers = db.UserFollower
 const op = db.Sequelize.Op;//contiene los operadores para usar en metodos de sequelize
 
 const bcrypt = require('bcryptjs');
@@ -33,11 +34,22 @@ const profileController = {
                     where: [{FkUserId: req.params.id}]
                 })
                 .then(function(telefonos){
-                    info.productos = telefonos;
-                    info.usuario = usuario;
-                    info.comentarios = comentarios
-                    //return res.send(info);
-                    return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                    userFollowers.findAll({
+                        where: [{FkUserId: req.params.id}]
+                    })
+                    .then(function(seguidores){
+                        userFollowers.findOne({
+                            where: [{FkUserId: req.params.id}]
+                        })
+                    })
+                    .then(function(yaSigue){
+                        info.productos = telefonos;
+                        info.usuario = usuario;
+                        info.comentarios = comentarios
+                        info.seguidores = seguidores
+                        //return res.send(info);
+                        return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                    })
                 })
             })
         })
@@ -45,6 +57,10 @@ const profileController = {
         
     },
     edit: function (req,res){
+
+        if (condition) {
+            
+        }
         return res.render('profile-edit', {info: data});
     },
     register: function (req,res){
@@ -190,6 +206,27 @@ const profileController = {
             .catch(error => console.log(error))
         
     },
+
+    storeFollower:function (req, res) {
+        
+        //res.send(req.body)
+
+        let follower = {
+            FkUserId:req.body.usuarioSeguido,
+            FkFollowerId: req.body.usuarioSeguidor
+        }
+
+        console.log(follower)
+
+        userFollowers.create(follower)
+
+        .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
+            // return res.send(respuesta)
+            return res.redirect('/profile/' + req.body.usuarioSeguido); //redirigir falta ponerle el id del usuario en cuestion -> session
+        })
+
+        
+    }
 }
 
 //exportamos

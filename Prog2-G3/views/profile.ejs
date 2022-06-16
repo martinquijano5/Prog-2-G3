@@ -27,17 +27,18 @@
 						</a>
 						<% }%>
 					</h1>
-					<form class="btn mt-3 ml-4" href="" action="store seguidor" method="post">
+					<form class="btn mt-3 ml-4" href="" action="storeFollower" method="post">
+						<input type="hidden" name="usuarioSeguido" value="<%= id %>">
+						<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
 						
-						<input type="text" name="usuario seguido">
-						<input type="text" name="usuario seguidor">
+						<button>SEGUIR</button>
 					</form>
 				</div>
 				<div>
 					<ul class="">
 						<li> <%= info.usuario.email %> </li>
 						<li> <%= info.productos.length %> productos</li>
-						<li>200 seguidores</li>
+						<li><%= info.seguidores.length %> seguidores</li>
 						<li><%= info.comentarios.length %>  comentarios</li>
 					</ul>
 				</div>

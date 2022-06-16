@@ -27,6 +27,8 @@ router.get('/register', profileController.register);
 
 router.post('/storeProfile', upload.single('image') , profileController.storeProfile); // procesa y almacena los datos en la db
 
+router.post('/storeFollower', profileController.storeFollower);
+
 router.get('/:id', profileController.show);
 
 //router.post('/profile', userController.profile); //procesa los datos recibidos en el form ???? que form?
