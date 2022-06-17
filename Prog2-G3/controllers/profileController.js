@@ -45,7 +45,7 @@ const profileController = {
                             info.productos = telefonos;
                             info.usuario = usuario;
                             info.comentarios = comentarios;
-                            info.seguidores = seguidores;
+                            info.seguidores = seguidores; 
                             info.yaSigue = yaSigue;
                             //return res.send(info);
                             return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos

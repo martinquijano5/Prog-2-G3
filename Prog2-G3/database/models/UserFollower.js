@@ -41,3 +41,4 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         
     return UserFollower;
 }
+

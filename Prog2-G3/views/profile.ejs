@@ -22,22 +22,26 @@
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"> <%= info.usuario.username %> 
 						<% if(locals.user){ %>
+							<% if (locals.user.username == info.usuario.username) { %> 
 						<a href="/profile/edit/<%=locals.user.id%>">
 							<i class="fas fa-cog"></i>
 						</a>
+							<% } else { %> 
+							<form  href="" action="storeFollower" method="post">
+								<input type="hidden" name="usuarioSeguido" value="<%= id %>">
+								<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
+								<% if(info.yaSigue == null) { %>
+									<button class="btn mt-3 ml-4" >FOLLOW</button>
+									<input type="hidden" name="seguido" value="<%=1%>">
+								<%} else { %> 
+									<button class="btn mt-3 ml-4" >UNFOLLOW</button>
+									<input type="hidden" name="seguido" value="<%=0%>">
+								<% } %> 
+							</form>
+							<% } %> 
 						<% }%>
 					</h1>
-					<form class="btn mt-3 ml-4" href="" action="storeFollower" method="post">
-						<input type="hidden" name="usuarioSeguido" value="<%= id %>">
-						<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
-						<% if(info.yaSigue == null) { %>
-							<button>SEGUIR</button>
-							<input type="hidden" name="seguido" value="<%=1%>">
-						<%} else { %> 
-							<button>DEJAR DE SEGUIR</button>
-							<input type="hidden" name="seguido" value="<%=0%>">
-						<% } %> 
-					</form>
+					
 				</div>
 				<div>
 					<ul class="">
@@ -56,7 +60,7 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Mis productos</h2>
+				<h2 class="products-title">No tienes productos</h2>
 			</div>
 			<!-- Show mis productos -->
 			<% for(let i =0 ;i < info.productos.length; i++) { %>
