@@ -59,9 +59,6 @@ const profileController = {
     },
     edit: function (req,res){
 
-        if (condition) {
-            
-        }
         return res.render('profile-edit', {info: data});
     },
     register: function (req,res){
