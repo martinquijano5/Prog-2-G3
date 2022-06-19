@@ -25,7 +25,7 @@
 					<h1 class="main-title"> <%= info.usuario.username %>
 						<% if (locals.user.username == info.usuario.username) { %>
 						<% if(locals.user){ %>
-						<a href="/profile/edit/<%=locals.user.id%>">
+						<a href="/profile-edit/<%=locals.user.id%>">
 							<i class="fas fa-cog"></i>
 						</a>
 						<% } %>
@@ -63,7 +63,11 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
+			<% if(info.productos.length == 0){ %> 
 				<h2 class="products-title">No tienes productos</h2>
+			<% }else{ %> 
+				<h2 class="products-title">Mis productos</h2>
+			<% } %> 
 			</div>
 			<!-- Show mis productos -->
 			<% for(let i =0 ;i < info.productos.length; i++) { %>

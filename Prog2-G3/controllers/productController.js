@@ -19,10 +19,15 @@ let funcionFillArray = require('../utils/fillArray');
 const productController = {
     show: function (req,res){
         phones.findOne({
-            include: [{association: 'owner'}, {association: 'comentarios'}],
-            where: [{id: req.params.id}]
+            where: [{id: req.params.id}],
+            include: [{association: 'owner'}, {association: 'comentarios', order: [['createdAt', 'order','DESC']]}],
+            //order: ['comentarios', 'order', 'desc']
         })
             .then(function(unTelefono){
+                let comentariosOrdenados = unTelefono.comentarios.slice().sort((a,b) => b.createdAt - a.createdAt);//como la consigna pide que los comentarios esten en orden descendiente ordenados por createdAt, con esta linea resolvemos esto
+                unTelefono.comentarios = comentariosOrdenados;
+                //res.send(comentariosOrdenados)
+
                 let comentadores = [];//checkear si el codigo este esta bien o hay otra forma de resolver
                 if(unTelefono.comentarios[0] != undefined){
                     //return res.send('hay comentarios')
@@ -86,21 +91,51 @@ const productController = {
             res.redirect('/product/' + req.body.FkPhoneId);
             
         }else{
-            let comment = {
-                text: req.body.text,
-                rating: req.body.rating,
-                FkUserId: req.body.FkUserId,
-                FkPhoneId: req.body.FkPhoneId
-            }
-            console.log(comment)
-            comments.create(comment)
-                .then(function(){
-                    res.redirect('/product/' + comment.FkPhoneId);
-                })
-
+        let comment = {
+            text: req.body.text,
+            rating: req.body.rating,
+            FkUserId: req.body.FkUserId,
+            FkPhoneId: req.body.FkPhoneId
         }
-        
-        
+        console.log(comment)
+        comments.create(comment)
+        .then(function(){
+            let acumulador = 0;
+            let ratingPromedio = 0;
+            comments.findAll({
+                where: [{FkPhoneId: comment.FkPhoneId}]
+            })
+            .then(function(todos){
+                //res.send(todos);
+                for(let i = 0; i < todos.length; i ++){
+                    acumulador += todos[i].rating;
+                }
+                ratingPromedio = acumulador / todos.length;
+                phones.findOne({
+                    where: [{id: comment.FkPhoneId}]
+                })
+                .then(function(result){
+                    let telefono = {
+                        id: result.id,
+                        image: result.image,
+                        model: result.model,
+                        brand: result.brand,
+                        year: result.year,
+                        color: result.color,
+                        memory: result.memory,
+                        size: result.createdAt,
+                        FkUserId: result.FkUserId,
+                        promedioRating: ratingPromedio
+                    }
+                    phones.update(telefono, {
+                        where: {id: comment.FkPhoneId}
+                    })
+                    .then(function(){
+                        return res.redirect(`/product/${telefono.id}`);
+                    })
+                })
+            })
+        })}
     }
 }
 //exportamos

@@ -50,6 +50,10 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         FkUserId:{
             notNull:true,
             type: DataTypes.INTEGER.UNSIGNED,
+        },
+        promedioRating:{
+            default: 0,
+            type: DataTypes.FLOAT.UNSIGNED
         }
     }
     //CONFIGURACIONES ADICIONALES
