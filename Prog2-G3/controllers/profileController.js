@@ -59,12 +59,15 @@ const profileController = {
     },
     edit: function (req,res){
 
-        if (condition) {
-            
+        if (!req.session.user){
+            res.redirect("/index" )
         }
         return res.render('profile-edit', {info: data});
     },
     register: function (req,res){
+        if (req.session.user){
+            res.redirect("/index" )
+        }
         return res.render('register');
     },
     editProfile: (req,res)=>{
@@ -96,6 +99,9 @@ const profileController = {
             .catch(error => console.log (error))
     },
     login: function (req,res){
+        if (req.session.user){
+            res.redirect("/index" )
+        }
         return res.render('login');
     },
     storeProfile: function (req, res){
@@ -193,13 +199,13 @@ const profileController = {
                         console.log('los errores son' + res.locals.errores);
                         return res.redirect('/profile/' + user.dataValues.id)
                     } else {
-                        res.locals.errores = 'la password no concide';
+                        res.locals.errores = {mensaje:"la password no concide"};
                         console.log('los errores son' + res.locals.errores);
                         return res.render('login')
                     }
 
                 } else{
-                    res.locals.errores = "El email es incorrecto"
+                    res.locals.errores ={mensaje:"El email es incorrecto"} 
                     console.log(res.locals.errores);
                     return res.render('login')
                 }

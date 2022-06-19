@@ -44,7 +44,10 @@
                 <label for="form-file">Foto de perfil</label>
                 <input name="image" type="file" class="form-file">
             </div>
-
+            <% if (locals.errores) { %>
+                <p><%=locals.errores.mensaje %> </p>
+            <% } %>
+          
             <button type="submit" class="btn btn-primary">Registrarse</button>
         </form>
     </div>

@@ -32,6 +32,9 @@
 					<input class = "border" type="checkbox" class="check" name="remember">
 					<label  for="check" >Recordame</label>
 				</div>
+				<% if (locals.errores) { %>
+					<p><%=locals.errores.mensaje %> </p>
+				<% } %>
 				<button type="submit" class="btn btn-primary">Log In</button>
 		</form>
 	</div>

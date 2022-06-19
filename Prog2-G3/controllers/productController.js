@@ -50,6 +50,9 @@ const productController = {
     add: function (req,res){
         //renderizar el form para crear una pelicula
         //conseguir todos los generos de la based e datos
+        if (!req.session.user){
+            res.redirect("/index" )
+        }
         return res.render('product-add', {info: data});
     },
     store: function (req,res){
@@ -79,18 +82,24 @@ const productController = {
     },
     storeComment: function (req, res){
         console.log(req.body);
-        
-        let comment = {
-            text: req.body.text,
-            rating: req.body.rating,
-            FkUserId: req.body.FkUserId,
-            FkPhoneId: req.body.FkPhoneId
+        if(req.body.text==""){
+            res.redirect('/product/' + req.body.FkPhoneId);
+            
+        }else{
+            let comment = {
+                text: req.body.text,
+                rating: req.body.rating,
+                FkUserId: req.body.FkUserId,
+                FkPhoneId: req.body.FkPhoneId
+            }
+            console.log(comment)
+            comments.create(comment)
+                .then(function(){
+                    res.redirect('/product/' + comment.FkPhoneId);
+                })
+
         }
-        console.log(comment)
-        comments.create(comment)
-            .then(function(){
-                res.redirect('/product/' + comment.FkPhoneId);
-            })
+        
         
     }
 }
