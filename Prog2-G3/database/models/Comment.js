@@ -17,7 +17,7 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         },
         rating:{
             notNull: true,
-            type: DataTypes.DECIMAL(2,1),
+            type: DataTypes.FLOAT,
         },
         FkPhoneId: {
             notNull: true,

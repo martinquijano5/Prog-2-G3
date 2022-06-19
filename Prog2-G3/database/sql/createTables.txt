@@ -21,6 +21,7 @@ CREATE TABLE phones (
     size DECIMAL(2,1) NOT NULL,
     createdAt DATETIME not null,
     updatedAt DATETIME,
+    promedioRating FLOAT UNSIGNED DEFAULT 0,
     
     FkUserId INT UNSIGNED,
     FOREIGN KEY (FkUserId) REFERENCES users(id)
@@ -29,7 +30,7 @@ CREATE TABLE phones (
 CREATE TABLE comments (
 	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
     text varchar(255) NOT NULL,
-    rating DECIMAL(2,1) NOT NULL,
+    rating FLOAT NOT NULL,
     FkPhoneId INT UNSIGNED NOT NULL,
     FkUserId INT UNSIGNED NOT NULL,
     createdAt DATETIME not null,
