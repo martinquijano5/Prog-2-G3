@@ -31,7 +31,10 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						
+						<article class="username-pfp">
+							<img class="userpfp" src="<%= info.owner.image %> " alt="foto de perfil de <%= info.owner.username %>">
+							<strong> <a href="/profile/<%= info.owner.id %>"> <%= info.owner.username %>  </a> </strong>
+						</article>
 						<% if(comentadores[0] != undefined) { %> 
 							<p id="titulo-comments"><strong>Comentarios:</strong></p>
 							<% for(let i =0; i< comentadores.length; i++) { %>
