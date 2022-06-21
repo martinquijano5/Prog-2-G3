@@ -136,6 +136,18 @@ const productController = {
                 })
             })
         })}
+    },
+    edit:function(req,res){
+        phones.findByPk(req.params.id)
+        .then(phone=>{
+            res.render("product-edit",{
+                info:phone
+            })
+        })
+        
+    },
+    update:function(req,res){
+
     }
 }
 //exportamos

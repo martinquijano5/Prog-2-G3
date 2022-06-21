@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('./partials/head') %>
+<body>
+	<!-- /Header -->
+	<% if(locals.user){ %>
+		<% console.log('cccc' + locals.user.username) %> 
+        <%- include('./partials/headerLogueado', {info: locals.user}) %>
+      <% } else {%>
+        <%- include('./partials/header') %>
+      <% }%>
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Editar productos</h2>
+			</div>
+		</div>
+		<form class="formulario" enctype="multipart/form-data" method="POST" action="/product/update/<%=info.id%>">
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Modelo</label>
+				<input name="model" class = "border form-control" type="text" id="formGroupExampleInput" value="<%=info.model%>">
+			</div>
+
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Marca</label>
+				<input name="brand" class = "border form-control" type="text" id="formGroupExampleInput"value="<%=info.brand%>">
+			</div>
+
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Año</label>
+				<input name="year" class = "border form-control" type="number" id="formGroupExampleInput"value="<%=info.año%>">
+			</div>
+
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Color</label>
+				<input name="color" class = "border form-control" type="text" id="formGroupExampleInput"value="<%=info.color%>">
+			</div>
+
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Memoria</label>
+				<input name="memory" class = "border form-control" type="number" id="formGroupExampleInput" placeholder="Numero de GB"value="<%=info.memory%>">
+			</div>
+
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Tamaño</label>
+				<input name="size" class = "border form-control" type="text" id="formGroupExampleInput" placeholder="Numero en pulgadas"value="<%=info.size%>">>
+			</div>
+
+			<div class="label-input">
+				<label for="form-control" id="inputFoto">Foto del Producto</label>
+				<input name="image" type="file" class="form-file"value="<%=info.image%>">
+			</div>
+			
+			<button type="submit" class="btn btn-primary">Editar</button>
+		</form>
+	</div>
+
+
+	<!-- footer -->
+	<%- include('./partials/footer') %>
+	<!-- /footer -->
+</body>
+
+</html>

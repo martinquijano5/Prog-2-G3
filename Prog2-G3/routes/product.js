@@ -21,6 +21,7 @@ router.get('/add', productController.add); // muestra el form
 router.post('/store', upload.single('image'), productController.store); // procesa y almacena los datos en la db
 router.post('/storeComment', productController.storeComment); 
 router.get('/:id', productController.show);
-
+router.get('/edit/:id', productController.edit); // muestra el form
+router.post('/update/:id', upload.single('image'), productController.update); 
 
 module.exports = router;

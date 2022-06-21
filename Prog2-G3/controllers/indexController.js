@@ -25,7 +25,7 @@ const indexController = {
             .then(function(celulares){
                 phones.findAll ({
                     include:[{association: 'owner'}, {association: 'comentarios'}],
-                    order : [['promedioRating', 'DESC']],
+                    
                     limit: 4
                 })
                 .then(function(celulares2){

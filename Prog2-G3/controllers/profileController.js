@@ -115,7 +115,10 @@ const profileController = {
         } else {
             image = req.file.filename
         }
-
+        if(req.body.password.length<3){
+            res.locals.errores={mensaje:"la contraseña debe tener mas de tres caracteres"}
+            return res.render("register")
+        }
         let user = { 
             email: req.body.email,
             username:req.body.username,
