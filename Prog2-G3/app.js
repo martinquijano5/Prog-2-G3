@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var productRouter = require('./routes/product');
+//importo las rutas que tienen que ver con el usuario
 var profileRouter = require('./routes/profile');
 const session = require('express-session')
 const db=require('./database/models')
@@ -28,7 +29,7 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-//Pasar los datos de session a locals
+//Pasar los datos de session a locals//que en la variable locals va a estar disponible la propiedad usuario para poder usarlasz
 app.use(function(req, res, next){
   if(req.session.user != undefined){
     res.locals.user = req.session.user
