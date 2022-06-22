@@ -20,13 +20,20 @@ const productController = {
     show: function (req,res){
         phones.findOne({
             where: [{id: req.params.id}],
-            include: [{association: 'owner'}, {association: 'comentarios', order: [['createdAt', 'order','DESC']]}],
+            include: [{association: 'owner'}, {association: 'comentarios'}],
             //order: ['comentarios', 'order', 'desc']
         })
             .then(function(unTelefono){
-                let comentariosOrdenados = unTelefono.comentarios.slice().sort((a,b) => b.createdAt - a.createdAt);//como la consigna pide que los comentarios esten en orden descendiente ordenados por createdAt, con esta linea resolvemos esto
+                let comentarios = [];
+                //return res.send(unTelefono.comentarios)
+                for(let i = 0; i < unTelefono.comentarios.length; i++){
+                    comentarios.push(unTelefono.comentarios[i])
+                }
+                //return res.send(comentarios);
+                let comentariosOrdenados = comentarios.sort((a,b) => b.createdAt - a.createdAt);//como la consigna pide que los comentarios esten en orden descendiente ordenados por createdAt, con esta linea resolvemos esto
+                //return res.send(comentariosOrdenados)
                 unTelefono.comentarios = comentariosOrdenados;
-                //res.send(comentariosOrdenados)
+                //return res.send(unTelefono)
 
                 let comentadores = [];//checkear si el codigo este esta bien o hay otra forma de resolver
                 if(unTelefono.comentarios[0] != undefined){
@@ -61,8 +68,15 @@ const productController = {
         return res.render('product-add', {info: data});
     },
     store: function (req,res){
-        console.log(req.body) //obtener los datos del formulario y armar el objeto literal que quiero guardar
-
+        if (req.file){
+            console.log('el filename es ahora es ' + req.file.filename) //obtener los datos del formulario y armar el objeto literal que quiero guardar
+            image = req.file.filename
+            console.log('entro a la foto');
+        } else {
+            console.log('el filename es ahora es vacio') //obtener los datos del formulario y armar el objeto literal que quiero guardar
+            console.log('no entro a la foto, pongo default')
+            image = 'default-image.png'
+        }
         let product = { //info del form
             model: req.body.model,
             brand: req.body.brand,
@@ -71,7 +85,7 @@ const productController = {
             memory: req.body.memory,
             size: req.body.size,
             date: req.body.date,
-            image: req.file.filename,
+            image: image,
             users_id: req.body.users_id,
             FkUserId: req.body.FkUserId
         }

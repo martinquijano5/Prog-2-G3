@@ -35,9 +35,11 @@
             createdAt:{
                 notNull: true,
                 type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW,
             },
             updatedAt:{
                 type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW,
             }
             
         }

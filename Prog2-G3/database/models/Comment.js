@@ -30,9 +30,11 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         createdAt:{
             notNull: true,
             type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
         },
         updatedAt:{
             type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
         }
     }
     //CONFIGURACIONES ADICIONALES

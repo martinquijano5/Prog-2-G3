@@ -58,11 +58,18 @@ const profileController = {
         
     },
     edit: function (req,res){
-
         if (!req.session.user){
             res.redirect("/index" )
         }
-        return res.render('profile-edit', {info: data});
+        let id = req.params.id;
+        users.findOne({
+            where: [{id: id}]
+        })
+        .then(function(usuario){
+            //return res.send(usuario);
+            return res.render('profile-edit', {info: usuario});
+        })
+
     },
     register: function (req,res){
         if (req.session.user){
@@ -94,7 +101,7 @@ const profileController = {
         }) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
             .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
                 // return res.send(respuesta)
-                res.redirect('/index'); //redirigir falta ponerle el id del usuario en cuestion -> session
+                res.redirect(`/profile/${req.body.id}`); //redirigir falta ponerle el id del usuario en cuestion -> session
             })
             .catch(error => console.log (error))
     },
@@ -109,11 +116,14 @@ const profileController = {
         console.log(req.body) // aca deberia llegar lo que mando el usuario
 
         var image;
-        if (!(req.file.filename)){
-            console.log('entro al filename')
-            image = '/images/users/default-image.png'
-        } else {
+        if (req.file){
+            console.log('el filename es ahora es ' + req.file.filename) //obtener los datos del formulario y armar el objeto literal que quiero guardar
             image = req.file.filename
+            console.log('entro a la foto');
+        } else {
+            console.log('el filename es ahora es vacio') //obtener los datos del formulario y armar el objeto literal que quiero guardar
+            console.log('no entro a la foto, pongo default')
+            image = 'default-image.png'
         }
         if(req.body.password.length<3){
             res.locals.errores={mensaje:"la contraseña debe tener mas de tres caracteres"}
@@ -125,7 +135,7 @@ const profileController = {
             password: bcrypt.hashSync(req.body.password, 10),
             date: req.body.date,
             dni: req.body.dni,
-            image: req.file.filename
+            image: image
         }
 
         users.findOne({
@@ -148,9 +158,7 @@ const profileController = {
                 })
             }
         })
-
         
-
             .catch(error => console.log (error))
 
     },

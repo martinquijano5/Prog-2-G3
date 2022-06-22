@@ -16,7 +16,6 @@ var upload = multer({storage: storage});
 
 /* GET home page. */
 
-router.get('/edit/:id', profileController.edit);
 
 router.get('/login', profileController.login);
 router.post('/login', profileController.signIn);
@@ -28,6 +27,8 @@ router.get('/register', profileController.register);
 router.post('/storeProfile', upload.single('image') , profileController.storeProfile); // procesa y almacena los datos en la db
 
 router.post('/storeFollower', profileController.storeFollower);
+
+router.get('/profile-edit/:id', profileController.edit);
 
 router.get('/:id', profileController.show);
 

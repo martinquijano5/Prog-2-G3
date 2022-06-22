@@ -25,7 +25,7 @@ const indexController = {
             .then(function(celulares){
                 phones.findAll ({
                     include:[{association: 'owner'}, {association: 'comentarios'}],
-                    
+                    order : [['promedioRating', 'DESC']],
                     limit: 4
                 })
                 .then(function(celulares2){
@@ -34,7 +34,7 @@ const indexController = {
                     }
                     //console.log('RESULTADOS DEL FINDALL: ' + celulares);
                     //return res.send (celulares)
-                    return res.render('index', {info: celulares, arrayNovedades: arrayNovedades, arrayMasComentados: arrayMasComentados});
+                    return res.render('index', {info: celulares});
                 })
             }) 
     },
