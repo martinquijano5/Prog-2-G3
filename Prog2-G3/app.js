@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var productRouter = require('./routes/product');
+//importo las rutas que tienen que ver con el usuario
 var profileRouter = require('./routes/profile');
 const session = require('express-session')
 const db=require('./database/models')
