@@ -42,16 +42,21 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         createdAt:{
             notNull: true,
             type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
         },
         updatedAt:{
             type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
         },
         
         FkUserId:{
             notNull:true,
             type: DataTypes.INTEGER.UNSIGNED,
         },
-        
+        promedioRating:{
+            default: 0,
+            type: DataTypes.FLOAT.UNSIGNED
+        }
     }
     //CONFIGURACIONES ADICIONALES
     let config = { //puede no estar, cuando el nombre de la tabla es el nombre del modelo en plural
