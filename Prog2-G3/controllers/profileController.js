@@ -32,6 +32,7 @@ const profileController = {
             .then(function(comentarios){
                 phones.findAll({
                     where: [{FkUserId: req.params.id}]
+
                 })
                 .then(function(telefonos){
                     userFollowers.findAll({
@@ -79,9 +80,16 @@ const profileController = {
     },
     editProfile: (req,res)=>{
 
-        if (!req.file){
-            console.log('entro al filename')
-            req.file.filename = '/images/users/default-image.png'
+        var image;
+
+        if (req.file){
+            console.log('el filename es ahora es ' + req.file.filename) //obtener los datos del formulario y armar el objeto literal que quiero guardar
+            image = req.file.filename
+            console.log('entro a la foto');
+        } else {
+            console.log('el filename es ahora es vacio') //obtener los datos del formulario y armar el objeto literal que quiero guardar
+            console.log('no entro a la foto, pongo default')
+            image = 'default-image.png'
         }
 
         let user = {
@@ -91,7 +99,7 @@ const profileController = {
             password: bcrypt.hashSync(req.body.password, 10),
             date: req.body.date,
             dni: req.body.dni,
-            image: req.file.filename
+            image: image
         }
         //pegar datos a bd
         users.update(user,{
@@ -101,7 +109,7 @@ const profileController = {
         }) //create agarra el objeto, se lo manda a la table en la bd y cuando esta lo guarda, devuelve el registro como parametro de la funcion del then
             .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
                 // return res.send(respuesta)
-                res.redirect(`/profile/${req.body.id}`); //redirigir falta ponerle el id del usuario en cuestion -> session
+                res.render(`/profile/${req.body.id}`); //redirigir falta ponerle el id del usuario en cuestion -> session
             })
             .catch(error => console.log (error))
     },
