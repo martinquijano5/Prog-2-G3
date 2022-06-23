@@ -89,7 +89,10 @@ const productController = {
             date: req.body.date,
             image: image,
             users_id: req.body.users_id,
-            FkUserId: req.body.FkUserId
+            FkUserId: req.body.FkUserId,
+            promedioRating: 0,
+            createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+            updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
         }
         //pegarlo a la bd con el metodo de sequelize
         //guardar info en la base de datos
@@ -139,7 +142,7 @@ const productController = {
                         year: result.year,
                         color: result.color,
                         memory: result.memory,
-                        size: result.createdAt,
+                        size: result.size,
                         FkUserId: result.FkUserId,
                         promedioRating: result.ratingPromedio
                     }
@@ -174,7 +177,7 @@ const productController = {
             console.log('no entro a la foto, pongo default')
             image = 'default-image.png'
         }
-        res.send (req.body)
+        //res.send (req.body)
         let telefono = {
             id: req.params.id,
             image: image,
@@ -183,13 +186,22 @@ const productController = {
             year: req.body.year,
             color: req.body.color,
             memory: req.body.memory,
-            size: req.body.createdAt,
+            size: req.body.size,
+            createdAt: req.body.createdAt,
+            updatedAt: new Date(),
+            promedioRating: req.body.ratingPromedio,
             FkUserId: req.body.FkUserId,
-            promedioRating: req.body.ratingPromedio
         }
+        //res.send(telefono)
         phones.update(telefono,{where:{id:req.params.id}})
         .then(function() {
             return res.redirect('/product/'+req.params.id)
+        })
+    },
+    delete: function(req,res){
+        phones.destroy({where: {id: req.params.id}})
+        .then(function(){
+            return res.redirect('/profile/'+user.id)
         })
     }
 }

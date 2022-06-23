@@ -42,12 +42,11 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         createdAt:{
             notNull: true,
             type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         },
         updatedAt:{
             type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
-        },
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')        },
         
         FkUserId:{
             notNull:true,
@@ -55,7 +54,7 @@ module.exports = function (Sequelize,DataTypes){ //el modelo exporta una funcion
         },
         promedioRating:{
             default: 0,
-            type: DataTypes.FLOAT.UNSIGNED
+            type: DataTypes.FLOAT.UNSIGNED,
         }
     }
     //CONFIGURACIONES ADICIONALES

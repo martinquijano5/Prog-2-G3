@@ -94,12 +94,12 @@ const profileController = {
 
         let user = {
             email: req.body.email,
-            
             username:req.body.username,
             password: bcrypt.hashSync(req.body.password, 10),
             date: req.body.date,
             dni: req.body.dni,
-            image: image
+            image: image,
+            createdAt: req.body.createdAt
         }
         //pegar datos a bd
         users.update(user,{

@@ -35,11 +35,13 @@
             createdAt:{
                 notNull: true,
                 type: DataTypes.DATE,
-                defaultValue: DataTypes.NOW,
+                defaultValue: 'curdate()',
+                defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
             },
             updatedAt:{
                 type: DataTypes.DATE,
-                defaultValue: DataTypes.NOW,
+                defaultValue: 'curdate()',
+                defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
             }
             
         }

@@ -23,5 +23,6 @@ router.post('/storeComment', productController.storeComment);
 router.get('/:id', productController.show);
 router.get('/edit/:id', productController.edit); // muestra el form
 router.post('/update/:id', upload.single('image'), productController.update); 
+router.post('/delete/:id', productController.delete); 
 
 module.exports = router;
