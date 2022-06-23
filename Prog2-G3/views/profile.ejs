@@ -30,7 +30,7 @@
 						</a>
 						<% } %>
 						<% } else { %>
-						<form href="" action="storeFollower" method="post">
+						<form action="storeFollower" method="post">
 							<input type="hidden" name="usuarioSeguido" value="<%= id %>">
 							<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
 							<% if(info.yaSigue == null) { %>

@@ -91,8 +91,8 @@ const productController = {
             users_id: req.body.users_id,
             FkUserId: req.body.FkUserId,
             promedioRating: 0,
-            createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
-            updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+            createdAt: new Date(),
+            updatedAt: new Date(),
         }
         //pegarlo a la bd con el metodo de sequelize
         //guardar info en la base de datos
@@ -144,7 +144,7 @@ const productController = {
                         memory: result.memory,
                         size: result.size,
                         FkUserId: result.FkUserId,
-                        promedioRating: result.ratingPromedio
+                        promedioRating: ratingPromedio
                     }
                     phones.update(telefono, {
                         where: {id: comment.FkPhoneId}
@@ -199,9 +199,11 @@ const productController = {
         })
     },
     delete: function(req,res){
+        console.log('borrar')
+
         phones.destroy({where: {id: req.params.id}})
         .then(function(){
-            return res.redirect('/profile/'+user.id)
+            return res.redirect('/profile/'+res.locals.user.id)
         })
     }
 }

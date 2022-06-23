@@ -20,6 +20,7 @@
 			<p class="product-detail-description">
 				<% if(locals.user && user.id==info.owner.id){ %>
 				<a href="/product/edit/<%=info.id%>">Editar</a>
+				
 				<a href="/product/delete/<%=info.id%>">Borrar</a>
 				<% }%>
 			</p>
@@ -69,16 +70,17 @@
 							<% console.log('no hay comentarios') %> 
 						<% } %>	
 					</section>
-					<div id="estrellas-input">
-						<%- estrellas[0] %> 
-						<%- estrellas[1] %> 
-						<%- estrellas[2] %> 
-						<%- estrellas[3] %> 
-						<%- estrellas[4] %> 
-					</div>
-					<input type="hidden" name="vuelta" id="estrellas-rating-vuelta" value="-1">
+					
 					
 					<% if(locals.user){ %> 
+						<div id="estrellas-input">
+							<%- estrellas[0] %> 
+							<%- estrellas[1] %> 
+							<%- estrellas[2] %> 
+							<%- estrellas[3] %> 
+							<%- estrellas[4] %> 
+						</div>
+						<input type="hidden" name="vuelta" id="estrellas-rating-vuelta" value="-1">
 					<form class="form" action="storeComment" method="POST">
 						<input class="form-input" name="text" type="text" placeholder="Agregar comentario">
 						<input type="hidden" name="rating" id="estrellas-rating-input">
@@ -86,6 +88,7 @@
 						<input name="FkPhoneId" class = "border form-control" type="hidden" id="formGroupExampleInput" value="<%= id %>">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
+
 				<% }else{ %> 
 					<a  class="buy-now-button"  href="/profile/login"> INGRESA A TU CUENTA </a>
 				<% } %> 

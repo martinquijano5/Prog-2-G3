@@ -91,7 +91,6 @@ const profileController = {
             console.log('no entro a la foto, pongo default')
             image = 'default-image.png'
         }
-
         let user = {
             email: req.body.email,
             username:req.body.username,
