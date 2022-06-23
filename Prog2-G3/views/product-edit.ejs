@@ -30,7 +30,7 @@
 
 			<div class="label-input">
 				<label for="formGroupExampleInput" class="form-label">Año</label>
-				<input name="year" class = "border form-control" type="number" id="formGroupExampleInput"value="<%=info.año%>">
+				<input name="year" class = "border form-control" type="number" id="formGroupExampleInput"value="<%=info.year%>">
 			</div>
 
 			<div class="label-input">
@@ -52,7 +52,11 @@
 				<label for="form-control" id="inputFoto">Foto del Producto</label>
 				<input name="image" type="file" class="form-file"value="<%=info.image%>">
 			</div>
-			
+
+			<input name="promedioRating" class = "border form-control" type="hidden" id="formGroupExampleInput"value="<%=info.promedioRating%>">
+			<input name="createdAt" class = "border form-control" type="hidden" id="formGroupExampleInput"value="<%=info.createdAt%>">
+			<input name="FkUserId" class = "border form-control" type="hidden" id="formGroupExampleInput"value="<%=info.FkUserId%>">
+
 			<button type="submit" class="btn btn-primary">Editar</button>
 		</form>
 	</div>

@@ -51,7 +51,7 @@ const productController = {
                         })
                     }
                 } else {
-                    //return res.send('no hay comentarios')
+                    //return res.send(unTelefono)
                     return res.render('product', {info: unTelefono, comentadores: [], id: req.params.id});
                 }
                 //return res.send(unTelefono)
@@ -68,6 +68,8 @@ const productController = {
         return res.render('product-add', {info: data});
     },
     store: function (req,res){
+
+        var image;
         if (req.file){
             console.log('el filename es ahora es ' + req.file.filename) //obtener los datos del formulario y armar el objeto literal que quiero guardar
             image = req.file.filename
@@ -139,7 +141,7 @@ const productController = {
                         memory: result.memory,
                         size: result.createdAt,
                         FkUserId: result.FkUserId,
-                        promedioRating: ratingPromedio
+                        promedioRating: result.ratingPromedio
                     }
                     phones.update(telefono, {
                         where: {id: comment.FkPhoneId}
@@ -154,6 +156,7 @@ const productController = {
     edit:function(req,res){
         phones.findByPk(req.params.id)
         .then(phone=>{
+            //return res.send(phone)
             res.render("product-edit",{
                 info:phone
             })
@@ -161,7 +164,33 @@ const productController = {
         
     },
     update:function(req,res){
-
+        var image;
+        if (req.file){
+            console.log('el filename es ahora es ' + req.file.filename) //obtener los datos del formulario y armar el objeto literal que quiero guardar
+            image = req.file.filename
+            console.log('entro a la foto');
+        } else {
+            console.log('el filename es ahora es vacio') //obtener los datos del formulario y armar el objeto literal que quiero guardar
+            console.log('no entro a la foto, pongo default')
+            image = 'default-image.png'
+        }
+        res.send (req.body)
+        let telefono = {
+            id: req.params.id,
+            image: image,
+            model: req.body.model,
+            brand: req.body.brand,
+            year: req.body.year,
+            color: req.body.color,
+            memory: req.body.memory,
+            size: req.body.createdAt,
+            FkUserId: req.body.FkUserId,
+            promedioRating: req.body.ratingPromedio
+        }
+        phones.update(telefono,{where:{id:req.params.id}})
+        .then(function() {
+            return res.redirect('/product/'+req.params.id)
+        })
     }
 }
 //exportamos
