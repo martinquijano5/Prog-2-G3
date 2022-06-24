@@ -1,10 +1,10 @@
 INSERT INTO users (email, username, password, date, dni, image, createdAt)
 VALUES 
-('mquijano@udesa.edu.ar', 'mquijano', '1234', '2002-11-05', '44486189', '/images/users/1.png', curdate()),
-('dboglione@udesa.edu.ar', 'dboglione', 'abcd', '2003-08-15','43596198','/images/users/2.png', curdate()),
-('mcoletto@udesa.edu.ar', 'mcoletto', 'mcoletto', '2002-08-27','44232083','/images/users/2.png', curdate());
+('mquijano@udesa.edu.ar', 'mquijano', '1234', '2002-11-05', '44486189', '1.png', curdate()),
+('dboglione@udesa.edu.ar', 'dboglione', 'abcd', '2003-08-15','43596198','2.png', curdate()),
+('mcoletto@udesa.edu.ar', 'mcoletto', 'mcoletto', '2002-08-27','44232083','2.png', curdate());
 
-
+//el primer usuario tiene la contra hasheada, la contra normal es mquijano
 
 INSERT INTO phones (image, model, brand, year, color, memory, size, createdAt, FkUserId)
 VALUES ('1.jpeg', 'iPhone 13 Pro', 'Apple', 2021, 'azul sierra', 128, 6.1, curdate(), 1),

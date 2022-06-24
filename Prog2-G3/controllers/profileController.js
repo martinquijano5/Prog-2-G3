@@ -62,6 +62,9 @@ const profileController = {
         if (!req.session.user){
             res.redirect("/index" )
         }
+        if(req.session.user.id != req.params.id){
+            res.redirect("/profile/profile-edit/"+req.session.user.id)
+        }
         let id = req.params.id;
         users.findOne({
             where: [{id: id}]
@@ -81,7 +84,6 @@ const profileController = {
     editProfile: (req,res)=>{
 
         var image;
-
         if (req.file){
             console.log('el filename es ahora es ' + req.file.filename) //obtener los datos del formulario y armar el objeto literal que quiero guardar
             image = req.file.filename
